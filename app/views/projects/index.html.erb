@@ -19,3 +19,7 @@
   </div>
 <% end  %>
 </div>
+
+<% if policy(Project).create? %>
+  <%= link_to "New project", new_project_path %>
+<% end %>
