@@ -1,0 +1,2 @@
+class UserIndustriesController < ApplicationController
+end
