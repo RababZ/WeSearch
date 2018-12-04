@@ -1,2 +1,19 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-xs-4">
+      <%= link_to "You have a project", new_project_path %>
+    </div>
+    <div class="col-xs-4">
+      <%= link_to "Join our plateforme", new_user_registration_path %>
+    </div>
+    <div class="col-xs-4">
+      <%= link_to "Your projects", projects_path %>
+    </div>
+  </div>
+
+</div>
