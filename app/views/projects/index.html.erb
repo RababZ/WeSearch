@@ -1,0 +1,21 @@
+<h1>Projects#index</h1>
+
+
+<div class="container">
+  <% @projects.each do |project| %>
+  <div class="row">
+    <div class="col-xs-3">
+      <p>project_id: <%= project.id  %></p>
+    </div>
+    <div class="col-xs-3">
+      <p>project_title: <%= project.title  %></p>
+    </div>
+    <div class="col-xs-3">
+      <p>client: <%= project.client.email %></p>
+    </div>
+    <div class="col-xs-3">
+      <%= link_to "Project tasks", project_tasks_path(project) %>
+    </div>
+  </div>
+<% end  %>
+</div>
