@@ -11,9 +11,8 @@ class CreateTasks < ActiveRecord::Migration[5.2]
       t.float :price
       t.references :project, foreign_key: true
       t.references :user, foreign_key: true
-      t.references :review, foreign_key: true
-      t.references :review, foreign_key: true
-
+      t.integer :client_review_id
+      t.integer :expert_review_id
       t.timestamps
     end
   end
