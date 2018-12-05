@@ -23,14 +23,14 @@
         </div>
         <div class="col-xs-3">
           <% if policy(project).destroy? %>
-            <%= link_to "Delete project", project, method: :delete, data: {confirm: 'Are you sure?'} %>
+            <%= link_to "Delete project", project_path(project), method: :delete, data: {confirm: 'Are you sure?'} %>
           <% end %>
         </div>
       </div>
 <% end  %>
 </div>
 
-<% if policy(Project).create? %>
+<% if policy(Project).new? %>
   <%= link_to "New project", new_project_path %>
 <% end %>
 
