@@ -3,3 +3,27 @@
 // @import "dashboard";
 // @import "profile";
 // @import "map";
+
+h1, h2, h3, p {
+   color: #333333;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 12px;
+}
