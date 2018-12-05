@@ -16,6 +16,16 @@
         <div class="col-xs-3">
           <%= link_to "Project tasks", project_tasks_path(project) %>
         </div>
+        <div class="col-xs-3">
+          <% if policy(project).edit? %>
+            <%= link_to "Edit project", edit_project_path(project.id) %>
+          <% end %>
+        </div>
+        <div class="col-xs-3">
+          <% if policy(project).destroy? %>
+            <%= link_to "Delete project", project, method: :delete, data: {confirm: 'Are you sure?'} %>
+          <% end %>
+        </div>
       </div>
 <% end  %>
 </div>
@@ -23,3 +33,4 @@
 <% if policy(Project).create? %>
   <%= link_to "New project", new_project_path %>
 <% end %>
+
