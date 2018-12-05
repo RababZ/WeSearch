@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.4.4'
 
+
 gem 'faker'
 gem 'pundit'
 gem 'bootsnap', require: false
@@ -29,5 +30,6 @@ group :development, :test do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'dotenv-rails'
   gem 'dotenv-rails'
 end
