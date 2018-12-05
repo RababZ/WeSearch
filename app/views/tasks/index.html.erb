@@ -14,7 +14,7 @@
           <p>project: <%= task.project.title %></p>
         </div>
         <div class="col-xs-3">
-          <%= link_to "Edit", project_tasks_path %> | <%= link_to "Reviw", project_tasks_path %> | <%= link_to "Close", project_tasks_path %> | <%= link_to "Destroy", task_path(task), method: :delete, data: { confirm: 'Are you sure?' }  %>
+          <%= link_to "Edit", edit_project_task_path( task.project, task) %> | <%= link_to "Reviw", project_tasks_path %> | <%= link_to "Close", project_tasks_path %> | <%= link_to "Destroy", task_path(task), method: :delete, data: { confirm: 'Are you sure?' }  %>
         </div>
       </div>
 <% end  %>
