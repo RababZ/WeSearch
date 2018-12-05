@@ -1,6 +1,7 @@
 class ProjectPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
+      # for now everyone can see all projects
       scope.all
     end
   end
@@ -14,12 +15,22 @@ class ProjectPolicy < ApplicationPolicy
 
   def show?
     # only the person who created the project can see the project
-    record.client == user || record.manager == user
+    user_is_owner?
   end
 
   def update?
     # only the person who created the project can edit
-    record.client == user || record.manager == user
+    user_is_owner?
   end
 
+  def destroy?
+    # only the person who created the project can delete
+    user_is_owner?
+  end
+
+  private
+
+  def user_is_owner?
+    record.client == user || record.manager == user
+  end
 end

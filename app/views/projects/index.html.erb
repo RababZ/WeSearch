@@ -1,12 +1,12 @@
-<h1>Projects#index</h1>
-
-
 <div class="container">
+  <h1>List of projects:</h1><br>
   <% @projects.each do |project| %>
       <div class="row">
         <div class="col-xs-3">
-          <p>project_id: <%= project.id  %></p>
+          <p><b><%= project.title %></b></p>
         </div>
+      </div>
+      <div class="row">
         <div class="col-xs-3">
           <p>project_title: <%= project.title  %></p>
         </div>
@@ -16,10 +16,21 @@
         <div class="col-xs-3">
           <%= link_to "Project tasks", project_tasks_path(project) %>
         </div>
+        <div class="col-xs-3">
+          <% if policy(project).edit? %>
+            <%= link_to "Edit project", edit_project_path(project.id) %>
+          <% end %>
+        </div>
+        <div class="col-xs-3">
+          <% if policy(project).destroy? %>
+            <%= link_to "Delete project", project_path(project), method: :delete, data: {confirm: 'Are you sure?'} %>
+          <% end %>
+        </div>
       </div>
 <% end  %>
 </div>
 
-<% if policy(Project).create? %>
+<% if policy(Project).new? %>
   <%= link_to "New project", new_project_path %>
 <% end %>
+

@@ -2,15 +2,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
-    #@projects = Project.all
-    #@projects = policy_scope(Project).order(created_at: :desc)
-    #if (current_user.type == "Client")
-      @projects = policy_scope(Project).where(client: current_user)
-    #elsif (current_user.type == "Manager")
-      #@projects = policy_scope(Project).where(manager: current_user)
-    #else
-      #@projects = policy_scope(Project).where(manager: current_user)
-    #end
+    @projects = policy_scope(Project).order(created_at: :desc)
   end
 
   def show
@@ -42,6 +34,8 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    @project.destroy
+    redirect_to projects_path
   end
 
   private
