@@ -4,5 +4,9 @@
   <%= f.input :start_date %>
   <%= f.input :end_date %>
   <%= f.input :deadline %>
-  <%= f.submit "add a project", class: "btn btn-primary" %>
+  <% if @project.id == nil %>
+    <%= f.submit "add a project", class: "btn btn-primary" %>
+    <% else %>
+    <%= f.submit "edit project", class: "btn btn-primary" %>
+  <% end %>
 <% end %>
