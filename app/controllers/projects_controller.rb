@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
+    # @projects = policy_scope(Project).order(created_at: :desc)
     #raise
   end
 
@@ -17,6 +18,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.manager = current_user
+    @project.client = current_user
     @project.status = false
     authorize @project
     @project.save
