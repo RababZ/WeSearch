@@ -6,6 +6,7 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def create?
+    # record.client == user || record.manager == user || user.type == "manager"
     true
   end
 end
