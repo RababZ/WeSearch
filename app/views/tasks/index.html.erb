@@ -1,1 +1,27 @@
 <h1>Tasks#index</h1>
+
+
+<div class="container">
+  <% @projects.each do |project| %>
+      <div class="row">
+        <div class="col-xs-3">
+          <p>project_id: <%= project.id  %></p>
+        </div>
+        <div class="col-xs-3">
+          <p>project_title: <%= project.title  %></p>
+        </div>
+        <div class="col-xs-3">
+          <p>client: <%= project.client.email %></p>
+        </div>
+        <div class="col-xs-3">
+          <%= link_to "Project tasks", project_tasks_path(project) %>
+        </div>
+      </div>
+<% end  %>
+</div>
+
+
+
+<% if policy(Task).create? %>
+  <%= link_to "new Task", new_project_task_path %>
+<% end %>
