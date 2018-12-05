@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.4.4'
 
-
+gem 'cloudinary', '~> 1.9.1'
 gem 'faker'
 gem 'pundit'
 gem 'bootsnap', require: false
