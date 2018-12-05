@@ -2,9 +2,15 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
-    @projects = Project.all
-    # @projects = policy_scope(Project).order(created_at: :desc)
-    #raise
+    #@projects = Project.all
+    #@projects = policy_scope(Project).order(created_at: :desc)
+    #if (current_user.type == "Client")
+      @projects = policy_scope(Project).where(client: current_user)
+    #elsif (current_user.type == "Manager")
+      #@projects = policy_scope(Project).where(manager: current_user)
+    #else
+      #@projects = policy_scope(Project).where(manager: current_user)
+    #end
   end
 
   def show
