@@ -1,0 +1,14 @@
+<%= simple_form_for [@project, @task] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.input :deadline %>
+  <%= f.input :work_hours%>
+  <%= f.input :price%>
+  <% if @task.id == nil %>
+    <%= f.submit "add a task", class: "btn btn-primary" %>
+    <% else %>
+    <%= f.submit "edit task", class: "btn btn-primary" %>
+  <% end %>
+<% end %>
