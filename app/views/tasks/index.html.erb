@@ -2,19 +2,19 @@
 
 
 <div class="container">
-  <% @projects.each do |project| %>
+  <% @tasks.each do |task| %>
       <div class="row">
         <div class="col-xs-3">
-          <p>project_id: <%= project.id  %></p>
+          <p>task_id: <%= task.id  %></p>
         </div>
         <div class="col-xs-3">
-          <p>project_title: <%= project.title  %></p>
+          <p>task: <%= task.title  %></p>
         </div>
         <div class="col-xs-3">
-          <p>client: <%= project.client.email %></p>
+          <p>project: <%= task.project.title %></p>
         </div>
         <div class="col-xs-3">
-          <%= link_to "Project tasks", project_tasks_path(project) %>
+          <%= link_to "Edit", project_tasks_path %> | <%= link_to "Reviw", project_tasks_path %> | <%= link_to "Close", project_tasks_path %> | <%= link_to "Destroy", task_path(task), method: :delete, data: { confirm: 'Are you sure?' }  %>
         </div>
       </div>
 <% end  %>
