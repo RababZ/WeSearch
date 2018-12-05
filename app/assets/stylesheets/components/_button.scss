@@ -1,6 +1,13 @@
 
-btn {
+.btn {
   color: white;
-  background-color: #30e3ca;
+  background-color: #1dad9b;
+  border-radius: 3px;
 
+}
+
+.btn:hover {
+  color: white;
+  background-color: #43c0ac;
+  transition: all .5s ease;
 }
