@@ -1,13 +1,14 @@
 
 .btn {
   color: white;
-  background-color: #1dad9b;
+  // background-color: #1dad9b;
   border-radius: 3px;
-
+  border: none;
 }
 
 .btn:hover {
   color: white;
-  background-color: #43c0ac;
+  // background-color: #43c0ac;
   transition: all .5s ease;
+  border: none;
 }
