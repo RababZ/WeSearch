@@ -11,7 +11,7 @@ User.destroy_all
   user = User.create(
     first_name: Faker::Name::first_name,
     last_name: Faker::Name::last_name,
-    email: Faker::Internet::email,
+    email: "manager@email.com",
     password: "123456",
     role: 'manager'
   )
@@ -23,7 +23,7 @@ end
   user = User.create(
     first_name: Faker::Name::first_name,
     last_name: Faker::Name::last_name,
-    email: Faker::Internet::email,
+    email: "client@email.com",
     password: "123456",
     role: 'client'
   )
@@ -35,7 +35,7 @@ end
   user = User.create(
     first_name: Faker::Name::first_name,
     last_name: Faker::Name::last_name,
-    email: Faker::Internet::email,
+    email: "expert@email.com",
     password: "123456",
     role: 'expert'
   )
