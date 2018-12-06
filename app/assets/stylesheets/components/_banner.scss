@@ -29,7 +29,13 @@
     opacity: 0.6;
     margin-bottom: 30px;
   }
+  .form-control-label {
+    color: $dark-gray;
+    text-align: left !important;
+  }
   .btn {
     margin: 10px auto;
   }
 }
+
+
