@@ -44,7 +44,7 @@ end
 
 10.times do
   project = Project.create(
-    title: Faker::Simpsons.quote,
+    title: Faker::Book.title,
     description: Faker::Simpsons.quote,
     status: false,
     start_date: Date.today,
@@ -56,7 +56,7 @@ end
 
   rand(5..10).times do
     task = Task.create(
-      title: Faker::Simpsons.quote,
+      title: Faker::Book.title,
       project: project,
       user: User.where(role: 'expert').sample
     )
