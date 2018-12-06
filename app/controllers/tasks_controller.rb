@@ -28,8 +28,21 @@ class TasksController < ApplicationController
 
   def edit
     @task = Task.find(params[:id])
-    authorize @project
+    @project = Project.find(params[:project_id])
+    #authorize @project
     authorize @task
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    @project = Project.find(params[:project_id])
+    #authorize @project
+    authorize @task
+    if @task.update(task_params)
+      redirect_to project_tasks_path(@task.project)
+    else
+      redirect_to :edit
+    end
   end
 
   def destroy

@@ -5,6 +5,7 @@ Project.destroy_all
 puts 'Destroying all users...'
 User.destroy_all
 
+
 # Managers
 3.times do
   user = User.create(

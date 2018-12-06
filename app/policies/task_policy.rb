@@ -21,5 +21,9 @@ def destroy?
   true #record.project.manager == user
 end
 
+def update?
+  true #record.project.manager == user
+end
+
 
 end

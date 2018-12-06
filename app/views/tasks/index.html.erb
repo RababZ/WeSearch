@@ -4,17 +4,20 @@
 <div class="container">
   <% @tasks.each do |task| %>
       <div class="row">
-        <div class="col-xs-3">
-          <p>task_id: <%= task.id  %></p>
+        <div class="col-xs-2">
+          <p><b>task_id:</b> <%= task.id  %></p>
+        </div>
+        <div class="col-xs-2">
+          <p><b>Owner:</b> <%= task.user.email  %></p>
         </div>
         <div class="col-xs-3">
-          <p>task: <%= task.title  %></p>
+          <p><b>task:</b> <%= task.title  %></p>
+        </div>
+        <div class="col-xs-2">
+          <p><b>project:</b> <%= task.project.title %></p>
         </div>
         <div class="col-xs-3">
-          <p>project: <%= task.project.title %></p>
-        </div>
-        <div class="col-xs-3">
-          <%= link_to "Edit", project_tasks_path %> | <%= link_to "Reviw", project_tasks_path %> | <%= link_to "Close", project_tasks_path %> | <%= link_to "Destroy", task_path(task), method: :delete, data: { confirm: 'Are you sure?' }  %>
+          <%= link_to "Edit", edit_project_task_path( task.project, task) %> | <%= link_to "Reviw", project_tasks_path %> | <%= link_to "Close", project_tasks_path %> | <%= link_to "Destroy", task_path(task), method: :delete, data: { confirm: 'Are you sure?' }  %>
         </div>
       </div>
 <% end  %>
