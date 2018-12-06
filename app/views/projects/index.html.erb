@@ -34,5 +34,37 @@
   <%= link_to "New project", new_project_path %>
 <% end %>
 
-<%= cl_image_tag("ygocktox7hessqbd4u6i",
-      width: 400, height: 300, crop: :fill)  %>
+
+
+
+
+<!-- <div class="container">
+  <div class="row">
+    <% @projects.each do |project| %>
+      <div class="project-card">
+        <div class="project-card-content">
+          <div class="col-xs-12 col-sm-4 col-md-2">
+            <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-2">
+            <h3 class="project-card-title"><%= project.title %></h3>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-2">
+            <p>Client: <%= project.client.email %></p>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-2">
+            <div class="project-card-actions">
+                <%= link_to "Tasks", project_tasks_path(project) %>
+                  <% if policy(project).edit? %>
+                    <%= link_to "Edit", edit_project_path(project.id) %>
+                  <% end %>
+                  <% if policy(project).destroy? %>
+                    <%= link_to "Delete", project_path(project), method: :delete, data: {confirm: 'Are you sure?'} %>
+                  <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div> -->
