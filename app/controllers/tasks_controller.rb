@@ -2,6 +2,7 @@ class TasksController < ApplicationController
   def index
     #@tasks = Task.where(project: params[:project_id])
     @tasks = policy_scope(Task).where(project: params[:project_id])
+    @tasks = @tasks.where(user: current_user) unless @tasks.first.project.manager == current_user
   end
 
   def new

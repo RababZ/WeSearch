@@ -1,23 +1,32 @@
 <h1>Tasks#index</h1>
+<div>User connected role's: <b><%= current_user.role %></b> </div>
 
 
 <div class="container">
   <% @tasks.each do |task| %>
       <div class="row">
-        <div class="col-xs-2">
+        <div class="col-xs-1">
           <p><b>task_id:</b> <%= task.id  %></p>
         </div>
         <div class="col-xs-2">
-          <p><b>Owner:</b> <%= task.user.email  %></p>
+          <p><b>Owner:</b> <%= task.user.email + " - " +  task.user.role %></p>
+          <p><b>Project manager:</b> <%= task.project.manager.email + " - " +  task.user.role %></p>
         </div>
         <div class="col-xs-3">
           <p><b>task:</b> <%= task.title  %></p>
         </div>
-        <div class="col-xs-2">
+        <div class="col-xs-3">
           <p><b>project:</b> <%= task.project.title %></p>
         </div>
         <div class="col-xs-3">
-          <%= link_to "Edit", edit_project_task_path( task.project, task) %> | <%= link_to "Reviw", project_tasks_path %> | <%= link_to "Close", project_tasks_path %> | <%= link_to "Destroy", task_path(task), method: :delete, data: { confirm: 'Are you sure?' }  %>
+          <% if policy(task).edit? %>
+            <%= link_to "Edit", edit_project_task_path( task.project, task) %> |
+          <% end %>
+          <%= link_to "Reviw", project_tasks_path %> |
+          <%= link_to "Close", project_tasks_path %>
+          <% if policy(task).destroy? %>
+             | <%= link_to "Destroy", project_task_path(task.project.id, task), method: :delete, data: { confirm: 'Are you sure?' }  %>
+          <% end %>
         </div>
       </div>
 <% end  %>
