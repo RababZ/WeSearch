@@ -1,10 +1,8 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <%#= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%#= image_tag "logo.png", height: 50 %>
-  <%# end %>
-
-  <i class="fas fa-chart-bar"><%= link_to root_path, class: "navbar-wagon-brand" %></i>
+  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+    <%= image_tag "logo.png", height: 50 %>
+  <% end %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
