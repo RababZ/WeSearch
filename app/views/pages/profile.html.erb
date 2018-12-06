@@ -1,0 +1,25 @@
+
+<!-- <div class="profile-container"> -->
+<div class="profile-background-card">
+  <%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill, class:"big-avatar" %>
+</div>
+
+<div class="profile-container">
+  <h3><%= "#{@user.first_name} #{@user.last_name} "%></h3>
+  <p><%= "#{@user.role.capitalize}"%></p><br>
+
+  <%= simple_form_for @user, url: profile_path, method: :patch do |f| %>
+    <%= f.input :first_name, wrapper_html: { class: 'form-name' } %>
+    <%= f.input :last_name, wrapper_html: { class: 'form-name' } %>
+    <%= f.input :photo, required: false %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.submit %>
+  <% end %>
+</div>
+
+
+<!-- cl_image_tag @user.photo, height: 300, width: 400, crop: :fill -->
+
+
+
+
