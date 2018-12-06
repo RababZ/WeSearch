@@ -2,6 +2,9 @@ class TaskPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
+      # user.role == "manager" ? scope.all : scope.where(user: user)
+      #scope.all
+      #scope.where(user: user).where(project.manager: user)
     end
   end
 
@@ -14,15 +17,17 @@ def new?
 end
 
 def edit?
-  true
+  update?
 end
 
 def destroy?
-  true #record.project.manager == user
+  #record.project.manager == user
+  record.project.manager == user
 end
 
 def update?
-  true #record.project.manager == user
+  #record.project.manager == user
+  (record.user == user) || (record.project.manager == user)
 end
 
 
