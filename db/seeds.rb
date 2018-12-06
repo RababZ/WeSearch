@@ -1,9 +1,10 @@
 puts 'Destroying all industries...'
 Industry.destroy_all
-puts 'Destroying all users...'
-User.destroy_all
 puts 'Destroying all projects...'
 Project.destroy_all
+puts 'Destroying all users...'
+User.destroy_all
+
 
 # Managers
 3.times do
