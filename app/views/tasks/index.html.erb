@@ -61,7 +61,7 @@
                         <div>
                           <p>
                             <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
-                            Expert:  <%= task.user.email %>
+                            Expert:  <%= task.user.nil? ? "Not yet assigned" : task.user.email %>
                           </p>
                         </div>
                         <div class="message-status">
@@ -95,39 +95,7 @@
 
 
 
-<!--
 
-<% @tasks.each do |task| %>
-      <div class="row">
-        <div class="col-xs-1">
-          <p><b>task_id:</b> <%= task.id  %></p>
-        </div>
-        <div class="col-xs-2">
-          <p><b>Owner:</b> <%= task.user.email + " - " +  task.user.role %></p>
-          <p><b>Project manager:</b> <%= task.project.manager.email + " - " +  task.user.role %></p>
-        </div>
-        <div class="col-xs-3">
-          <p><b>task:</b> <%= task.title  %></p>
-        </div>
-        <div class="col-xs-3">
-          <p><b>project:</b> <%= task.project.title %></p>
-        </div>
-        <div class="col-xs-3">
-          <% if policy(task).edit? %>
-            <%= link_to "Edit", edit_project_task_path( task.project, task) %> |
-          <% end %>
-          <%= link_to "Reviw", project_tasks_path %> |
-          <%= link_to "Close", project_tasks_path %>
-          <% if policy(task).destroy? %>
-             | <%= link_to "Destroy", project_task_path(task.project.id, task), method: :delete, data: { confirm: 'Are you sure?' }  %>
-          <% end %>
-        </div>
-      </div>
-  <% end  %>
-
-  <% if policy(Task).create? %>
-    <%= link_to "new Task", new_project_task_path %>
-  <% end %> -->
 
 
 
