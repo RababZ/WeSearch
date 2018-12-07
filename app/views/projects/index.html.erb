@@ -1,66 +1,52 @@
-<!-- <div class="container">
-  <h1>List of projects:</h1><br>
-  <% @projects.each do |project| %>
-      <div class="row">
-        <div class="col-xs-3">
-          <p><b><%= project.title %></b></p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-3">
-          <p>project_title: <%= project.title  %></p>
-        </div>
-        <div class="col-xs-3">
-          <p>client: <%= project.client.email %></p>
-        </div>
-        <div class="col-xs-3">
-          <%= link_to "Project tasks", project_tasks_path(project) %>
-        </div>
-        <div class="col-xs-3">
-          <% if policy(project).edit? %>
-            <%= link_to "Edit project", edit_project_path(project.id) %>
-          <% end %>
-        </div>
-        <div class="col-xs-3">
-          <% if policy(project).destroy? %>
-            <%= link_to "Delete project", project_path(project), method: :delete, data: {confirm: 'Are you sure?'} %>
-          <% end %>
-        </div>
-      </div>
-<% end  %>
-</div>
-
-<% if policy(Project).new? %>
-  <%= link_to "New project", new_project_path %>
-<% end %>
- -->
 <div class="wrap">
     <div class="container">
-        <div class="row">
-            <% @projects.each do |project| %>
-            <div class="project-card">
-                <div class="project-card-content">
-                    <div class="col-xs-12 col-sm-8">
-                        <h3 class="project-card-title"><%= project.title %></h3>
-                        <div class="project-card-actions">
-                            <%= link_to "Tasks", project_tasks_path(project) %>
-                            <% if policy(project).edit? %>
-                            <%= link_to "Edit", edit_project_path(project.id) %>
-                            <% end %>
-                            <% if policy(project).destroy? %>
-                            <%= link_to "Delete", project_path(project), method: :delete, data: {confirm: 'Are you sure?'} %>
-                            <% end %>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-4">
-                        <p>
-                            <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>Client:
-                            <%= project.client.email %>
-                        </p>
+        <% @projects.each do |project| %>
+        <div class="project-card">
+            <div class="row row-height-set">
+                <div class='col-xs-12 col-sm-8'>
+                  <h3 class="project-card-title"><strong><%= project.title %></strong>
+                  <% if project.status == true %>
+                    <i class="fas fa-check-circle green"></i>
+                  <% else %>
+                    <i class="fas fa-times-circle red"></i>
+                  <% end %>
+                  </h3>
+                </div>
+                <div class='col-xs-12 col-sm-8'>
+                    <p class="project-card-content font-size-big"><%= project.description %></p>
+                </div>
+                <div class='col-xs-12 col-sm-8'>
+                    <p class="project-card-content font-size-big"><%= "Manager: #{project.manager.first_name} #{project.manager.last_name}" %></p>
+                </div>
+
+                <div class='col-xs-12 col-sm-8'>
+                  <p class="project-card-content font-size-big">Progress:
+                  <% project.tasks.each do |task| %>
+                  <% if task.status == true %>
+                    <i class="fas fa-square green"></i>
+                    <% else %>
+                    <i class="fas fa-square red"></i>
+                    <% end %>
+                  <% end %>
+                  </p>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-xs-12 flex-right">
+                    <div class="project-card-actions">
+                        <%= link_to "Tasks", project_tasks_path(project) %>
+                        <% if policy(project).edit? %>
+                        <%= link_to "Edit", edit_project_path(project.id) %>
+                        <% end %>
+                        <% if policy(project).destroy? %>
+                        <%= link_to "Delete", project_path(project), method: :delete, data: {confirm: 'Are you sure?'} %>
+                        <% end %>
                     </div>
                 </div>
             </div>
-            <% end %>
         </div>
+        <% end %>
     </div>
 </div>
