@@ -1,3 +1,7 @@
+
+
+
+
 <h1>Tasks#index</h1>
 <div>User connected role's: <b><%= current_user.role %></b> </div>
 
@@ -29,11 +33,72 @@
           <% end %>
         </div>
       </div>
-<% end  %>
+  <% end  %>
+
+  <% if policy(Task).create? %>
+    <%= link_to "new Task", new_project_task_path %>
+  <% end %>
+
+
+
+    <div class="row">
+            <% @tasks.each do |task| %>
+            <div class="task-card">
+                <div class="task-card-content">
+                    <div class="col-xs-12 col-sm-8">
+                        <h3 class="task-card-title"><%= task.title %></h3>
+                        <div class="body"><p><%= task.title %> desription</p></div>
+                        <div class="task-card-actions">
+                            <% if policy(task).edit? %>
+                              <%= link_to "Edit", edit_project_task_path( task.project, task) %>
+                            <% end %>
+                            <%= link_to "Reviw", project_tasks_path %>
+                            <%= link_to "Close", project_tasks_path %>
+                            <% if policy(task).destroy? %>
+                               <%= link_to "Destroy", project_task_path(task.project.id, task), method: :delete, data: { confirm: 'Are you sure?' }  %>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <p>
+                            <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>Client:
+                            <%= task.project.client.email %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+        </div>
+
+
+
+
+
+    <div class="message">
+      <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+      <div class="message-name">
+        <h3>Gab Dehan</h3>
+        <p>10/07/17</p>
+      </div>
+      <div class="message-body">
+        <p><strong>I am not sure yet!</strong></p>
+        <p>
+          I am not sure yet! I might be in Shanghai at this moment... Can I tell you later?
+        </p>
+      </div>
+      <div class="message-status">
+        <p class="status pending">Pending</p>
+        <p class="price">€345</p>
+      </div>
+    </div>
+
+
+
+
+
 </div>
 
 
 
-<% if policy(Task).create? %>
-  <%= link_to "new Task", new_project_task_path %>
-<% end %>
+
+

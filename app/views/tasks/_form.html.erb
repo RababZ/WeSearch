@@ -1,15 +1,16 @@
 
 <%= simple_form_for [@project, @task] do |f| %>
-<%= f.input :title %>
-<%= f.input :description %>
-<%= f.input :start_date %>
-<%= f.input :end_date %>
-<%= f.input :deadline %>
-<%= f.input :work_hours%>
-<%= f.input :price%>
-<% if @task.id == nil %>
-<%= f.submit "add a task", class: "btn btn-primary" %>
-<% else %>
-<%= f.submit "Update task", class: "btn btn-primary" %>
-<% end %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :start_date, as: :date, html5: true  %>
+  <%= f.input :end_date, as: :date, html5: true  %>
+  <%= f.input :deadline, as: :date, html5: true  %>
+
+  <% if @task.id == nil %>
+    <%= f.submit "add a task", class: "btn btn-primary" %>
+  <% else %>
+    <%= f.input :work_hours%>
+    <%= f.input :price%>
+    <%= f.submit "Update task", class: "btn btn-primary" %>
+  <% end %>
 <% end %>
