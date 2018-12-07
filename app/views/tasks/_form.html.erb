@@ -1,15 +1,18 @@
 
 <%= simple_form_for [@project, @task] do |f| %>
+
+
 <%= f.input :title, label_html: {class: 'pull-left'} %>
 <%= f.input :description, label_html: {class: 'pull-left'} %>
 <%= f.input :start_date, label_html: {class: 'pull-left'}, as: :date, html5: true %>
 <%= f.input :end_date, label_html: {class: 'pull-left'}, as: :date, html5: true %>
 <%= f.input :deadline, label_html: {class: 'pull-left'}, as: :date, html5: true %>
-<%= f.input :work_hours, label_html: {class: 'pull-left'} %>
-<%= f.input :price, label_html: {class: 'pull-left'} %>
+
 <% if @task.id == nil %>
 <%= f.submit "add a task", class: "btn btn-primary" %>
 <% else %>
+<%= f.input :work_hours, label_html: {class: 'pull-left'} %>
+<%= f.input :price, label_html: {class: 'pull-left'} %>
 <%= f.submit "Update task", class: "btn btn-primary" %>
 <% end %>
 <% end %>
