@@ -1,29 +1,29 @@
-
 <!-- <div class="profile-container"> -->
 <div class="profile-background-card">
-  <% if @user.photo.nil? %>
-    <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class:"big-avatar" %>
-  <% else %>
+    <% if @user.photo.url.nil? %>
+    <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd-e9Kn0P1AAKT-EdAiaAVUvBtRVAJqONXIL0pJ402cOAzVi0i", class: "big-avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+    <% else %>
     <%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill, class:"big-avatar" %>
-  <% end %>
+    <% end %>
 </div>
-
-<div class="profile-container">
-  <h3><%= "#{@user.first_name} #{@user.last_name} "%></h3>
-  <p><%= "#{@user.role.capitalize}"%></p><br>
-
-  <%= simple_form_for @user, url: profile_path, method: :patch do |f| %>
-    <%= f.input :first_name, wrapper_html: { class: 'form-name' } %>
-    <%= f.input :last_name, wrapper_html: { class: 'form-name' } %>
-    <%= f.input :photo, required: false %>
-    <%= f.input :photo_cache, as: :hidden %>
-    <%= f.submit %>
-  <% end %>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+            <div class="form-login">
+                <!-- <div class="profile-container"> -->
+                <h3><%= "#{@user.first_name} #{@user.last_name} "%></h3>
+                <p>
+                    <%= "#{@user.role.capitalize}"%>
+                </p><br>
+                <%= simple_form_for @user, url: profile_path, method: :patch do |f| %>
+                <%= f.input :first_name, wrapper_html: { class: 'form-name' } %>
+                <%= f.input :last_name, wrapper_html: { class: 'form-name' } %>
+                <%= f.input :photo, required: false %>
+                <%= f.input :photo_cache, as: :hidden %>
+                <%= f.submit class: "btn btn-primary" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
 </div>
-
-
 <!-- cl_image_tag @user.photo, height: 300, width: 400, crop: :fill -->
-
-
-
-
