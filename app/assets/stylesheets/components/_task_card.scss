@@ -1,3 +1,57 @@
+.project-task-card {
+  width: 100%;
+  height: 25vh;
+  margin: 10px;
+  padding: 10px;
+  background-color: #f9f2ec;
+  border-radius: 1px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.05), 0 1px 3px 0 rgba(0,0,0,0.05), 0 2px 1px -2px rgba(0,0,0,0.07);
+  .avatar {
+  height: 35px;
+  width: 35px;
+  margin-right: 20px;
+  border-radius: 50%;
+  }
+}
+
+.project-task-card-content {
+  padding: 10px;
+  .body {
+  font-size: 14px;
+  font-weight: bold;
+  }
+}
+
+.project-task-card-title{
+  margin: 10px;
+}
+
+.project-task-card-body{
+  margin: 10px;
+}
+
+.project-task-card-actions {
+  padding: 16px 24px;
+}
+
+.project-task-card-actions a {
+  display: inline-block;
+  margin-right: 20px;
+  margin-left: 20px;
+  text-decoration: none;
+  //color: rgba(0, 0, 0, .5);
+  font-size: 16px;
+}
+
+.project-task-card-actions a:hover {
+  text-decoration: none;
+  color: $dark-gray;
+  }
+
+
+
+
+
 .task-card {
   width: 100%;
   height: 25vh;
@@ -22,7 +76,13 @@
   }
 }
 
+.task-card-title{
+  margin: 10px;
+}
 
+.task-card-body{
+  margin: 10px;
+}
 
 .task-card-actions {
   padding: 16px 24px;
@@ -49,53 +109,11 @@
 
 
 
-
-
-
-
-.message {
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  border-bottom: 1px solid rgba(220,224,244,0.4);
-}
-.message:last-child {
-  border-bottom: none;
-}
-.message-body {
-  flex-grow: 1;
-}
-.message-name {
-  padding-left: 10px;
-  min-width: 100px;
-}
-.message-name h3 {
-  font-size: 13px;
-  margin-bottom: 0px;
-}
-.message-name p {
-  font-size: 13px;
-  font-weight: lighter;
-  opacity: 0.6;
-  margin-top: 5px;
-}
-.message-body {
-  padding-left: 10px;
-  font-size: 13px;
-  color: rgba(0,0,0,0.7);
-}
-.message-body {
-  padding-left: 20px;
-  color: rgba(0,0,0,0.4);
-}
-.message-body strong{
-  color: rgba(0,0,0,0.9);
-  color: rgba(0,0,0,0.9);
-}
-.message-body p {
-  margin: 6px 0;
-}
 .message-status {
+  //display: flex;
+  //align-items: center;
+  //padding: 20px;
+  margin: 30px;
   font-size: 14px;
   font-weight: bold;
 }
@@ -103,10 +121,8 @@
   color: #04A366;
 }
 .status.declined {
-  color: red;
-}
-.status.pending {
   color: lightgrey;
 }
-
-
+.status.pending {
+  color: red;
+}
