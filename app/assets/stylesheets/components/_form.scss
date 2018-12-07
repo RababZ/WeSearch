@@ -1,5 +1,6 @@
 
 .form-login {
+  position: relative;
   background-color: rgba(255, 255, 255, .9);
   padding: 10px 20px;
   margin: 50px auto;
@@ -29,4 +30,8 @@
     color: $dark-gray;
     text-align: left !important;
   }
+
+.form-control.date {
+  color: $gray;
+}
 
