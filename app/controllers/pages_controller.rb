@@ -12,7 +12,6 @@ class PagesController < ApplicationController
   def profile_update
     @user = current_user
     authorize @user
-
     if @user.update(profile_params)
       redirect_to profile_path
     else
