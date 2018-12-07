@@ -1,7 +1,11 @@
 
 <!-- <div class="profile-container"> -->
 <div class="profile-background-card">
-  <%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill, class:"big-avatar" %>
+  <% if @user.photo.nil? %>
+    <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class:"big-avatar" %>
+  <% else %>
+    <%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill, class:"big-avatar" %>
+  <% end %>
 </div>
 
 <div class="profile-container">
