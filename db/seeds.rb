@@ -46,7 +46,7 @@ end
   project = Project.create(
     title: Faker::Book.title,
     description: Faker::Simpsons.quote,
-    status: false,
+    status: [false, true].sample,
     start_date: Date.today,
     deadline: Date.today + rand(1..5).year,
     client: User.where(role: 'client').sample,
@@ -58,7 +58,8 @@ end
     task = Task.create(
       title: Faker::Book.title,
       project: project,
-      user: User.where(role: 'expert').sample
+      user: User.where(role: 'expert').sample,
+      status: [false, true].sample
     )
     puts "Task #{task.title} created for #{project.title}"
   end
