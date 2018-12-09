@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :projects do
-    resources :tasks, only: [ :index, :new, :create, :edit, :update, :destroy]
+    resources :tasks, only: [:index, :new, :create, :edit, :update, :destroy]
   end
+  resources :users, only: [:index]
 
   get "profile", to: "pages#profile"
   patch "profile", to: "pages#profile_update"
