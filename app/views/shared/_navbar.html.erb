@@ -72,9 +72,18 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+        <% if user_signed_in? %>
+          <li><%= link_to "Profile", profile_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+          <li><%= link_to "Projects", projects_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+          <li><%= link_to "Contact us", contact_us_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+          <li><%= link_to t(".sign_out", default: "Log out"), destroy_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+        <% else %>
+        <li><%= link_to "Who we are", "#", class: "navbar-wagon-item navbar-wagon-link" %></li>
+        <li><%= link_to "How it works", "#", class: "navbar-wagon-item navbar-wagon-link" %></li>
+        <li><%= link_to "Our services", "#", class: "navbar-wagon-item navbar-wagon-link" %></li>
+        <li><%= link_to "Contact us", contact_us_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+        <li><%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+        <% end %>
       </ul>
     </div>
   </div>
