@@ -16,12 +16,13 @@
 }
 
 .project-card-title {
-  font-size: 15px;
+  font-size: 20px;
   margin: 10px;
 }
 
 .project-card-content {
-  padding: 10px;
+  // padding: 10px;
+  margin-left: 10px;
 }
 
 .project-card-actions a {
@@ -53,35 +54,19 @@
   align-items: center;
 }
 
-.green {
+
+.fa-green {
+  font-size: 40px;
   color: $green;
 }
 
-.red {
-  color: $red;
+.fa-gray {
+  font-size: 40px;
+  color: gray;
 }
 
 .font-size-big {
   font-size: 14px;
 }
 
-.progress-bar {
-  background-color: whiteSmoke;
-  border-radius: 2px;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25) inset;
-
-  width: 250px;
-  height: 20px;
-
-  position: relative;
-  display: block;
-}
-
-.progress-bar > span {
-  background-color: blue;
-  border-radius: 2px;
-
-  display: block;
-  text-indent: -9999px;
-}
 
