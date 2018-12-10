@@ -1,38 +1,6 @@
 <div class="container">
 
     <div class="row">
-            <!-- <div class="project-task-card">
-                <div class="project-task-card-content">
-                    <div class="col-xs-12 col-sm-3">
-                        <h1 class="project-task-card-title">Project</h1>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                        <h1 class="project-task-card-title"><%= @tasks.first.project.title %> </h1>
-                    </div>
-                    <div class="col-xs-12 col-sm-3">
-                        <div><p>
-                            <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>Client:
-                            <%= @tasks.first.project.client.email %>
-                        </p></div>
-                        <div><p>
-                            <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>Manager:
-                            <%= @tasks.first.project.manager.email %>
-                        </p></div>
-
-                    </div>
-                </div>
-            </div> -->
-
-            <!-- <div>
-              <div class="project-task-card-actions">
-                <% if policy(Task).create? %>
-
-                        <%= link_to "new Task", new_project_task_path, class: "btn btn-success" %>
-                        <%= link_to "Projects", projects_path %>
-
-                <% end %>
-              </div>
-            </div> -->
 
             <% @tasks.each do |task| %>
             <div class="task-card">
@@ -77,6 +45,37 @@
                 </div>
             </div>
             <% end %>
+
+
+
+          <div class="task-card">
+                <div class="task-card-content">
+                    <div class="col-xs-12 col-sm-3">
+                        <h3 class="task-card-title">XXXXXXX</h3>
+
+
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <p>
+                            <div class="task-card-body"><h1>NO Task is created</h1></div>
+                        </p>
+                    </div>
+                    <div class="col-xs-12 col-sm-3">
+                        <div>
+                          <p>
+                            XXXXXXXXX
+                          </p>
+                        </div>
+                        <div class="message-status">
+                          <p>XXXXXXX</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
 
             <div>
               <div class="project-task-card-actions">
