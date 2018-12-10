@@ -34,12 +34,14 @@
     text-align: left !important;
   }
   .btn {
-    // margin: 10px auto;
+    margin: 10px auto;
     padding: 15px 20px;
-    margin: 10px 20px;
     width: 300px;
     font-size: 16px;
     font-weight: lighter;
+  }
+  .btn-side-mgn {
+    margin: 10px 20px;
   }
 }
 
