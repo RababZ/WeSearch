@@ -2,7 +2,16 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
-    @projects = policy_scope(Project).order(created_at: :desc)
+    #@projects = policy_scope(Project).order(created_at: :desc)
+    case current_user.role
+      when "manager"
+        @projects = policy_scope(Project).order(created_at: :desc)#.where(manager: current_user)
+      when "expert"
+        @projects = policy_scope(Project).where(expert: current_user).order(created_at: :desc)
+      when "client"
+        @projects = policy_scope(Project).where(client: current_user).order(created_at: :desc)
+    end
+
   end
 
   def show
@@ -14,9 +23,22 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    #raise
     @project = Project.new(project_params)
-    @project.manager = current_user
-    @project.client = current_user
+    case current_user.role
+      when "manager"
+        @project.manager = current_user
+        @project.client = nil
+        @project.expert = nil
+      when "expert"
+        @project.manager = nil
+        @project.client = nil
+        @project.expert = current_user
+      when "client"
+        @project.manager = nil
+        @project.client = current_user
+        @project.expert = nil
+    end
     @project.status = false
     authorize @project
     if @project.save

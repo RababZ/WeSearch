@@ -6,13 +6,21 @@
     <br>
     <div class="container">
       <div class="row">
-        <div class="col-xs-12">
-          <%= link_to "Become a knowledge professional", new_user_registration_path, class: "btn btn-success btn-side-mgn" %>
-          <%= link_to "Become a client", new_user_registration_path, class: "btn btn-success btn-side-mgn" %>
-        </div>
+        <% if user_signed_in? && current_user.role == "client" %>
+          <div class="col-xs-12">
+            <%= link_to "New project", new_project_path, class: "btn btn-success" %>
+          </div>
+        <% elsif user_signed_in? %>
+          <div class="col-xs-12">
+            <%= link_to "My projects", projects_path, class: "btn btn-success" %>
+          </div>
+        <% else %>
+          <div class="col-xs-12">
+            <%= link_to "Become a knowledge professional", new_user_registration_path, class: "btn btn-success btn-side-mgn" %>
+            <%= link_to "Become a client", new_user_registration_path, class: "btn btn-success btn-side-mgn" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
-
-<!-- Need to make the home page buttons depend on who is signed in or not (Ex: New project button for client) -->
