@@ -19,7 +19,7 @@ User.destroy_all
 end
 
 # Clients
-5.times do
+#5.times do
   user = User.create(
     first_name: Faker::Name::first_name,
     last_name: Faker::Name::last_name,
@@ -28,10 +28,10 @@ end
     role: 'client'
   )
   puts "User #{user.email} (#{user.role}) created"
-end
+#end
 
 # Experts
-10.times do
+#10.times do
   user = User.create(
     first_name: Faker::Name::first_name,
     last_name: Faker::Name::last_name,
@@ -41,7 +41,7 @@ end
     availability: [false, true].sample
   )
   puts "User #{user.email} (#{user.role}) created"
-end
+#end
 
 10.times do
   project = Project.create(

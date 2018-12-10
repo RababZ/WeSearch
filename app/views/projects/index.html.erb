@@ -20,7 +20,7 @@
               </div>
               <div class='col-xs-12 col-sm-8'>
                   <p class="project-card-content font-size-big">
-                      <%= "Manager: #{project.manager.first_name} #{project.manager.last_name}" %>
+                      Manager: <%= project.manager.nil? ? "Dosen't assigned yet" : "#{project.manager.first_name} #{project.manager.last_name}" %>
                   </p>
               </div>
               <div class='col-xs-12 col-sm-8'>
