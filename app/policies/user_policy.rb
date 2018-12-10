@@ -15,4 +15,7 @@ class UserPolicy < ApplicationPolicy
   def profile_update?
     profile?
   end
+  def filter?
+    true
+  end
 end
