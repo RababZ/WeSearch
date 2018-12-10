@@ -30,5 +30,12 @@ def update?
   (record.project.expert == user) || (record.project.manager == user)
 end
 
+def edit_to_close?
+  true
+end
+
+def close?
+  true
+end
 
 end

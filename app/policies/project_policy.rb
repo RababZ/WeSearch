@@ -28,6 +28,15 @@ class ProjectPolicy < ApplicationPolicy
     user_is_manager?
   end
 
+  def edit_to_close?
+  true
+end
+
+def close?
+  true
+end
+
+
   private
 
   def user_is_manager?
