@@ -1,54 +1,52 @@
-<!-- Still need to organize them into pending, current and past projects -->
-<div class="wrap">
-    <div class="container">
-        <% @projects.each do |project| %>
-        <div class="project-card">
-            <div class="row row-height-set">
-              <div class='col-xs-12 col-sm-8'>
-                  <h3 class="project-card-title"><strong><%= project.title %></strong>
-                <% if project.status == true %>
-                  <i class="fas fa-check-circle green"></i>
-                <% else %>
-                  <i class="fas fa-times-circle red"></i>
-                <% end %>
-                </h3>
-              </div>
-              <div class='col-xs-12 col-sm-8'>
-                  <p class="project-card-content font-size-big">
-                      <%= project.description %>
-                  </p>
-              </div>
-              <div class='col-xs-12 col-sm-8'>
-                  <p class="project-card-content font-size-big">
-                      <%= "Manager: #{project.manager.first_name} #{project.manager.last_name}" %>
-                  </p>
-              </div>
-              <div class='col-xs-12 col-sm-8'>
-                  <p class="project-card-content font-size-big">Progress:
-                      <% project.tasks.each do |task| %>
-                      <% if task.status == true %>
-                      <i class="fas fa-square green"></i>
-                      <% else %>
-                      <i class="fas fa-square red"></i>
-                      <% end %>
-                      <% end %>
-                  </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12 flex-right">
-                  <div class="project-card-actions">
-                      <%= link_to "Tasks", project_tasks_path(project) %>
-                      <% if policy(project).edit? %>
-                      <%= link_to "Edit", edit_project_path(project.id) %>
-                      <% end %>
-                      <% if policy(project).destroy? %>
-                      <%= link_to "Delete", project_path(project), method: :delete, data: {confirm: 'Are you sure?'} %>
-                      <% end %>
-                  </div>
-              </div>
-            </div>
+<div class="wrap container">
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingOne">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            Pending projects
+          </a>
+        </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+          <% @projects.where(approved: false).each do |project| %>
+            <%= render "project_card", project: project %>
+          <% end %>
         </div>
-        <% end %>
+      </div>
     </div>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingTwo">
+        <h4 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            Current projects
+          </a>
+        </h4>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+        <div class="panel-body">
+          <% @projects.where(approved: true, status: false).each do |project| %>
+            <%= render "project_card", project: project %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingThree">
+        <h4 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Past projects
+          </a>
+        </h4>
+      </div>
+      <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+        <div class="panel-body">
+          <% @projects.where(approved: true, status: true).each do |project| %>
+            <%= render "project_card", project: project %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

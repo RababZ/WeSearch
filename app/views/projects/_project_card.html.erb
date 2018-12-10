@@ -1,0 +1,56 @@
+<div class="project-card">
+  <progress max="100" value="80">
+    <div class="progress-bar">
+      <!-- Need to check if this below is really working.. it seems static -->
+        <span style="width: "#{project.nb_hours/project.nb_tasks}.to_i";"></span>
+    </div>
+</progress>
+  <div class="row">
+      <div class='col-xs-12 col-sm-8'>
+          <h3 class="project-card-title"><strong><%= project.title %></strong>
+      <% if project.status == true %>
+        <i class="fas fa-check-circle green"></i>
+      <% else %>
+        <i class="fas fa-times-circle red"></i>
+      <% end %>
+      </h3>
+      </div>
+  </div>
+  <div class="row">
+    <div class='col-xs-12 col-sm-8'>
+        <p class="project-card-content font-size-big">
+            <%= project.description %>
+        </p>
+        <p class="project-card-content font-size-big">
+            <%= "Manager: #{project.manager.first_name} #{project.manager.last_name}" %>
+        </p>
+    </div>
+    <div class="col-xs-12 col-sm-4 flex-right">
+      <p class="project-card-content font-size-big">Progress:
+          <% project.tasks.each do |task| %>
+          <% if task.status == true %>
+          <i class="fas fa-square green"></i>
+          <% else %>
+          <i class="fas fa-square red"></i>
+          <% end %>
+          <% end %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+  </div>
+  <div class="row">
+      <div class="col-xs-12 flex-right">
+          <div class="project-card-actions">
+              <%= link_to "Tasks", project_tasks_path(project) %>
+              <% if policy(project).edit? %>
+              <%= link_to "Edit", edit_project_path(project.id) %>
+              <% end %>
+              <% if policy(project).destroy? %>
+              <%= link_to "Delete", project_path(project), method: :delete, data: {confirm: 'Are you sure?'} %>
+              <% end %>
+          </div>
+      </div>
+  </div>
+</div>
+
