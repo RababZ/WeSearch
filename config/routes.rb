@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :tasks, only: [:index, :new, :create, :edit, :update, :destroy]
   end
   resources :users, only: [:index]
-
+  get "/experts/filter/" , to: "users#filter" , as: "experts_filter"
   get "profile", to: "pages#profile"
   patch "profile", to: "pages#profile_update"
   get "contact_us", to: "pages#contact_us"

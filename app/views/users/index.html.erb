@@ -1,15 +1,28 @@
-<div class="container profile-card">
+<!-- <div class="container profile-card"> -->
+  <%# @users.each do |user| %>
+    <%# if user.role == "expert" %>
+      <%# if user.photo.url.nil? %>
+        <%#= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd-e9Kn0P1AAKT-EdAiaAVUvBtRVAJqONXIL0pJ402cOAzVi0i", class: "avatar dropdown-toggle", class: "medium-avatar" %>
+      <%# else %>
+        <%#= cl_image_tag current_user.photo, height: 300, width: 400, crop: :fill, class: "medium-avatar" %>
+      <%# end %>
+      <!-- <div> -->
+        <!-- <h3><strong><%#= "#{user.first_name.capitalize} #{user.last_name.capitalize}" %></strong></h3> -->
+        <!-- <p><%#= user.email %></p> -->
+      <!-- </div> -->
+    <%# end %>
+  <%# end %>
+<!-- </div> -->
+<%= form_tag experts_filter_path , method: :get do %>
+  <input type="text" name="country" >
+  <input type="submit">
+<% end %>
+
+
+<div class="container">
   <% @users.each do |user| %>
-    <% if user.role == "expert" %>
-      <% if user.photo.url.nil? %>
-        <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd-e9Kn0P1AAKT-EdAiaAVUvBtRVAJqONXIL0pJ402cOAzVi0i", class: "avatar dropdown-toggle", class: "medium-avatar" %>
-      <% else %>
-        <%= cl_image_tag current_user.photo, height: 300, width: 400, crop: :fill, class: "medium-avatar" %>
-      <% end %>
-      <div>
-        <h3><strong><%= "#{user.first_name.capitalize} #{user.last_name.capitalize}" %></strong></h3>
-        <p><%= user.email %></p>
-      </div>
-    <% end %>
+  <ul>
+    <%= user.email %>
+  </ul>
   <% end %>
 </div>
