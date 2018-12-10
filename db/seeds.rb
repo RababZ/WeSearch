@@ -51,7 +51,8 @@ end
     start_date: Date.today,
     deadline: Date.today + rand(1..5).year,
     client: User.where(role: 'client').sample,
-    manager: User.where(role: 'manager').sample
+    manager: User.where(role: 'manager').sample,
+    expert: User.where(role: 'expert').sample
   )
   puts "Project #{project.title} created"
 
@@ -60,7 +61,6 @@ end
       title: Faker::Book.title,
       description: "Consultants offer advice and expertise to organisations to help them improve their business performance in terms of operations, profitability, management, structure and strategy. Although the workload can be heavy, consulting is a sociable profession with plenty of networking opportunities. The work stretches across a variety of areas, including management, strategy, IT, finance, marketing, HR and supply chain management",
       project: project,
-      user: User.where(role: 'expert').sample,
       status: [false, true].sample
     )
     puts "Task #{task.title} created for #{project.title}"

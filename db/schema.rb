@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_09_203829) do
+ActiveRecord::Schema.define(version: 2018_12_10_104353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,13 +31,17 @@ ActiveRecord::Schema.define(version: 2018_12_09_203829) do
     t.date "deadline"
     t.integer "client_id"
     t.integer "manager_id"
+    t.integer "client_review_id"
+    t.integer "expert_review_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "nb_tasks"
     t.integer "nb_hours"
     t.string "expertise_level"
     t.string "industry"
     t.string "country"
     t.boolean "approved", default: false
+    t.integer "expert_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -55,15 +59,10 @@ ActiveRecord::Schema.define(version: 2018_12_09_203829) do
     t.date "end_date"
     t.date "deadline"
     t.integer "work_hours"
-    t.float "price"
     t.bigint "project_id"
-    t.bigint "user_id"
-    t.integer "client_review_id"
-    t.integer "expert_review_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_tasks_on_project_id"
-    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "user_industries", force: :cascade do |t|
@@ -87,16 +86,16 @@ ActiveRecord::Schema.define(version: 2018_12_09_203829) do
     t.string "first_name"
     t.string "last_name"
     t.string "photo"
+    t.string "country"
+    t.string "industry"
     t.integer "years_experience"
     t.boolean "availability"
-    t.string "country"
     t.integer "hours_available_per_weeek"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "tasks", "projects"
-  add_foreign_key "tasks", "users"
   add_foreign_key "user_industries", "industries"
   add_foreign_key "user_industries", "users"
 end

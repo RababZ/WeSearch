@@ -27,7 +27,7 @@ end
 
 def update?
   #record.project.manager == user
-  (record.user == user) || (record.project.manager == user)
+  (record.project.expert == user) || (record.project.manager == user)
 end
 
 

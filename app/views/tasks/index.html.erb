@@ -61,7 +61,7 @@
                         <div>
                           <p>
                             <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
-                            Expert:  <%= task.user.nil? ? "Not yet assigned" : task.user.email %>
+                            Expert:  <%= task.project.expert.nil? ? "Not yet assigned" : task.project.expert.email %>
                           </p>
                         </div>
                         <div class="message-status">

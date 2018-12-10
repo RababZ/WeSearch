@@ -9,7 +9,8 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.date :deadline
       t.integer :client_id
       t.integer :manager_id
-
+      t.integer :client_review_id
+      t.integer :expert_review_id
 
       t.timestamps
     end
