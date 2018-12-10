@@ -20,17 +20,17 @@ class ProjectPolicy < ApplicationPolicy
 
   def update?
     # only the person who created the project can edit
-    user_is_owner?
+    user_is_manager?
   end
 
   def destroy?
     # only the person who created the project can delete
-    user_is_owner?
+    user_is_manager?
   end
 
   private
 
-  def user_is_owner?
-    record.client == user || record.manager == user
+  def user_is_manager?
+    record.manager == user || record.manager == nil
   end
 end
