@@ -16,13 +16,11 @@
           </div>
         <% else %>
           <div class="col-xs-12">
-            <%= link_to "Become a knowledge professional", new_user_registration_path, class: "btn btn-success" %>
-            <%= link_to "Become a client", new_user_registration_path, class: "btn btn-success" %>
+            <%= link_to "Become a knowledge professional", new_user_registration_path, class: "btn btn-success btn-side-mgn" %>
+            <%= link_to "Become a client", new_user_registration_path, class: "btn btn-success btn-side-mgn" %>
           </div>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-
-<!-- Need to make the home page buttons depend on who is signed in or not (Ex: New project button for client) -->
