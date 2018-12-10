@@ -37,7 +37,8 @@ end
     last_name: Faker::Name::last_name,
     email: "expert@email.com",
     password: "123456",
-    role: 'expert'
+    role: 'expert',
+    availability: [false, true].sample
   )
   puts "User #{user.email} (#{user.role}) created"
 end

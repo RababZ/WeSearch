@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_07_122845) do
+ActiveRecord::Schema.define(version: 2018_12_09_203829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,11 @@ ActiveRecord::Schema.define(version: 2018_12_07_122845) do
     t.integer "manager_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "nb_hours"
+    t.string "expertise_level"
+    t.string "industry"
+    t.string "country"
+    t.boolean "approved", default: false
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -84,6 +89,8 @@ ActiveRecord::Schema.define(version: 2018_12_07_122845) do
     t.string "photo"
     t.integer "years_experience"
     t.boolean "availability"
+    t.string "country"
+    t.integer "hours_available_per_weeek"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

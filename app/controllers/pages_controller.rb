@@ -25,6 +25,6 @@ class PagesController < ApplicationController
   private
 
   def profile_params
-    params.require(:user).permit(:first_name, :last_name, :photo)
+    params.require(:user).permit(:first_name, :last_name, :photo, :country, :years_experience, :availability, :hours_available_per_weeek)
   end
 end
