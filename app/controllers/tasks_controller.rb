@@ -1,10 +1,7 @@
 class TasksController < ApplicationController
-  def index
-    #@tasks = Task.where(project: params[:project_id])
-    @tasks = policy_scope(Task).where(project: params[:project_id])
-    # @tasks = @tasks.where(user: current_user) unless ((@tasks.first.project.manager == current_user) || (@tasks.first.project.client == current_user))
-    #@tasks = @tasks.where(@tasks.first.project.expert == current_user) unless ((@tasks.first.project.manager == current_user) || (@tasks.first.project.client == current_user))
 
+  def index
+    @tasks = policy_scope(Task).where(project: params[:project_id])
   end
 
   def new
@@ -56,6 +53,26 @@ class TasksController < ApplicationController
     else
       redirect_to project_tasks_path
     end
+  end
+
+  def edit_to_close
+    @task = Task.find(params[:id])
+    @project = Project.find(params[:project_id])
+    authorize @project
+    authorize @task
+  end
+
+  def close
+    @task = Task.find(params[:id])
+    @project = Project.find(params[:project_id])
+    authorize @project
+    authorize @task
+    if @task.update(end_date: task_params[:end_date], deadline: task_params[:deadline], work_hours: task_params[:work_hours], status: true)
+      redirect_to project_tasks_path(@task.project)
+    else
+      redirect_to :edit_to_close
+    end
+
   end
 
 

@@ -18,7 +18,7 @@
                               <%= link_to "Edit", edit_project_task_path( task.project, task) %>
                             <% end %>
                             <%= link_to "Review", project_tasks_path %>
-                            <%= link_to "Close", project_tasks_path %>
+                            <%= link_to "Close", edit_task_to_close_path( task.project, task) %>
                             <% if policy(task).destroy? %>
                                <%= link_to "Destroy", project_task_path(task.project.id, task), method: :delete, data: { confirm: 'Are you sure?' }  %>
                             <% end %>
@@ -33,8 +33,8 @@
                           </p>
                         </div>
                         <div class="message-status">
-                          <% if task == @tasks.first %>
-                          <p class="status accepted">Accepted</p>
+                          <% if task.status == true %>
+                          <p class="status accepted">Closed</p>
                           <% else %>
                           <p class="status pending">Pending</p>
                           <% end %>
@@ -47,32 +47,23 @@
             <% end %>
 
 
-
-          <div class="task-card">
-                <div class="task-card-content">
-                    <div class="col-xs-12 col-sm-3">
-                        <h3 class="task-card-title">XXXXXXX</h3>
-
-
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                        <p>
-                            <div class="task-card-body"><h1>NO Task is created</h1></div>
-                        </p>
-                    </div>
-                    <div class="col-xs-12 col-sm-3">
-                        <div>
-                          <p>
-                            XXXXXXXXX
-                          </p>
+          <% if @tasks.empty? %>
+              <div class="task-card">
+                    <div class="task-card-content">
+                        <div class="col-xs-12 col-sm-3"></div>
+                        <div class="col-xs-12 col-sm-6">
+                            <p>
+                                <div class="task-card-body"><h1>NO Task is created</h1></div>
+                            </p>
                         </div>
-                        <div class="message-status">
-                          <p>XXXXXXX</p>
-                        </div>
+                        <div class="col-xs-12 col-sm-3">
+                            <div></div>
+                            <div class="message-status"></div>
 
+                        </div>
                     </div>
                 </div>
-            </div>
+            <% end %>
 
 
 
