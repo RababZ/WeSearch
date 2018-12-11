@@ -1,16 +1,17 @@
-
-<%= simple_form_for [@project, @task], url: closetask_path(@project, @task), method: :patch do |f| %>
-
-
-<%= f.input :title, label_html: {class: 'pull-left'} %>
-<%= f.input :description, label_html: {class: 'pull-left'} %>
-<%= f.input :start_date, label_html: {class: 'pull-left'}, as: :date, html5: true %>
-<%= f.input :end_date, label_html: {class: 'pull-left'}, as: :date, html5: true %>
-<%= f.input :work_hours, label_html: {class: 'pull-left'} %>
-
-<%= f.submit "Close a task", class: "btn btn-primary" %>
-
-<%#= f.input :work_hours, label_html: {class: 'pull-left'} %>
-
-
-<% end %>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <div class="form-login">
+                <%= simple_form_for [@project, @task], url: closetask_path(@project, @task), method: :patch do |f| %>
+                <%= f.input :title, label_html: {class: 'pull-left'} %>
+                <%= f.input :description, label_html: {class: 'pull-left'} %>
+                <%= f.input :start_date, label_html: {class: 'pull-left'}, as: :date, html5: true %>
+                <%= f.input :end_date, label_html: {class: 'pull-left'}, as: :date, html5: true %>
+                <%= f.input :work_hours, label_html: {class: 'pull-left'} %>
+                <%= f.submit "Close a task", class: "btn btn-primary" %>
+                <%#= f.input :work_hours, label_html: {class: 'pull-left'} %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
