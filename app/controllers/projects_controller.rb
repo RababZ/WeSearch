@@ -42,6 +42,21 @@ class ProjectsController < ApplicationController
     @project.status = false
     authorize @project
     if @project.save
+      div = @project.nb_hours / @project.nb_tasks
+      rest = @project.nb_hours.modulo(@project.nb_tasks)
+      #create tasks
+      @project.nb_tasks.times do |i|
+        if i == (@project.nb_tasks - 1)
+          div += rest
+        end
+        task = Task.create(
+          title: "Delivery" + i.to_s,
+          description: "Delivery",
+          project: @project,
+          work_hours: div,
+          status: false
+        )
+      end
       redirect_to project_path(@project), notice: 'Project was successfully created'
     else
       render :new
@@ -68,6 +83,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:title, :description, :start_date, :end_date, :deadline, :nb_hours, :expertise_level, :industry, :country)
+    params.require(:project).permit(:title, :description, :start_date, :end_date, :deadline, :nb_hours, :expertise_level, :industry, :country, :nb_tasks)
   end
 end
