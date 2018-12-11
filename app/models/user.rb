@@ -10,4 +10,6 @@ class User < ApplicationRecord
 
   has_many :projects
   mount_uploader :photo, PhotoUploader
+
+  #scope :managers, -> (){self.where(role: "manager")}
 end

@@ -10,6 +10,8 @@
   <% if @project.id == nil %>
     <%= f.submit "add a project", class: "btn btn-primary" %>
     <% else %>
+      <%= f.select :manager_id, options_from_collection_for_select(User.where(role: "manager"), 'id', 'email'), :prompt => 'Select a manager' %>
+      <%= f.select :expert_id, options_from_collection_for_select(User.where(role: "expert"), 'id', 'email'), :prompt => 'Select an expert' %>
     <%= f.submit "edit project", class: "btn btn-primary" %>
   <% end %>
 <% end %>

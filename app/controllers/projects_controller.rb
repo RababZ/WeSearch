@@ -68,6 +68,7 @@ class ProjectsController < ApplicationController
 
   def update
     @project.update(project_params)
+    redirect_to projects_path
   end
 
   def destroy
@@ -83,6 +84,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:title, :description, :start_date, :end_date, :deadline, :nb_hours, :expertise_level, :industry, :country, :nb_tasks)
+    params.require(:project).permit(:title, :description, :start_date, :end_date, :deadline, :nb_hours, :expertise_level, :industry, :country, :nb_tasks, :manager_id, :expert_id)
   end
 end
