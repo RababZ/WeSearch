@@ -64,6 +64,15 @@ class TasksController < ApplicationController
 
   def close
     @task = Task.find(params[:id])
+    @project = Project.find(params[:project_id])
+    authorize @project
+    authorize @task
+    if @task.update(end_date: task_params[:end_date], deadline: task_params[:deadline], work_hours: task_params[:work_hours], status: true)
+      redirect_to project_tasks_path(@task.project)
+    else
+      redirect_to :edit_to_close
+    end
+
   end
 
 

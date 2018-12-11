@@ -18,7 +18,7 @@
                               <%= link_to "Edit", edit_project_task_path( task.project, task) %>
                             <% end %>
                             <%= link_to "Review", project_tasks_path %>
-                            <%= link_to "Close", toto_path( task.project, task) %>
+                            <%= link_to "Close", edit_task_to_close_path( task.project, task) %>
                             <% if policy(task).destroy? %>
                                <%= link_to "Destroy", project_task_path(task.project.id, task), method: :delete, data: { confirm: 'Are you sure?' }  %>
                             <% end %>
@@ -33,8 +33,8 @@
                           </p>
                         </div>
                         <div class="message-status">
-                          <% if task == @tasks.first %>
-                          <p class="status accepted">Accepted</p>
+                          <% if task.status == true %>
+                          <p class="status accepted">Closed</p>
                           <% else %>
                           <p class="status pending">Pending</p>
                           <% end %>
