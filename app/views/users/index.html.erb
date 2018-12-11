@@ -13,23 +13,41 @@
     <%# end %>
   <%# end %> <!-- </div> -->
 
-<div class="container">
-  <%= form_tag experts_filter_path , method: :get do %>
-    Country: <input type="text" name="country" >
-    <!-- Industry:<input type="text" name="industry" > -->
-    Availability: <input type="text" name="availability" >
-    <input type="submit">
-  <% end %>
-  <% @users.each do |user| %>
-    <ul>
-      <%= user.email %>
-    </ul>
+
+
+<div class="filter-container">
+  <div class="container">
+    <%= form_tag users_path , method: :get do %>
+        Country:
+        <select name="country">
+          <option value=""></option>
+          <% @all_users.each do |user| %>
+            <option value="<%= user.country %>"><%= user.country %></option>
+          <% end %>
+        </select>
+        Industry:
+        <select name="industry">
+          <option value=""></option>
+          <% @all_users.each do |user| %>
+            <option value="<%= user.industry %>"><%= user.industry %></option>
+          <% end %>
+        </select>
+        Availability:
+        <select name="availability">
+          <option value=""></option>
+          <option value="<%= true %>">Yes</option>
+          <option value="<%= false %>">No</option>
+        </select>
+      <input type="submit" class="btn btn-primary">
     <% end %>
   </div>
-
+</div>
+<div class="container">
+  <ul>
+    <% @users.each do |user| %>
+    <li><%= user.email %></li>
+    <% end %>
+  </ul>
 </div>
 
 
-
-<!-- Need to install this: https://semantic-ui.com/introduction/getting-started.html#install-semantic-ui
-https://semantic-ui.com/modules/dropdown.html -->

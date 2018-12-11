@@ -1,20 +1,17 @@
 class UsersController < ApplicationController
   def index
-    @users = policy_scope(User)
-  end
+    @all_users = policy_scope(User)
+    @users = @all_users
+    if params[:country] && !params[:country].empty?
+      @users = @users.where(country: params[:country])
+    end
 
-  def filter
-    sql_query = " \
-       users.country = :country \
-       and users.hours_available_per_weeek between 0 and 20 \
-       and users.availability = :availability \
-     "
-    @users = policy_scope(User).where(
-      sql_query,
-      country: "#{params[:country]}",
-      availability: "#{params[:availability]}"
-      # industry: "#{params[:industry]}"
-      )
-    authorize @users
+    if params[:industry] && !params[:industry].empty?
+      @users = @users.where(industry: params[:industry])
+    end
+
+    if params[:availability] && !params[:industry].empty?
+      @users = @users.where(availability: params[:availability])
+    end
   end
 end
