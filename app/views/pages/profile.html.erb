@@ -1,29 +1,49 @@
-<!-- <div class="profile-container"> -->
-<div class="profile-background-card">
-    <% if @user.photo.url.nil? %>
-    <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd-e9Kn0P1AAKT-EdAiaAVUvBtRVAJqONXIL0pJ402cOAzVi0i", class: "big-avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-    <% else %>
-    <%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill, class:"big-avatar" %>
-    <% end %>
-</div>
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-            <div class="form-login">
-                <!-- <div class="profile-container"> -->
-                <h3><%= "#{@user.first_name} #{@user.last_name} "%></h3>
-                <p>
-                    <%= "#{@user.role.capitalize}"%>
-                </p><br>
-                <%= simple_form_for @user, url: profile_path, method: :patch do |f| %>
-                <%= f.input :first_name, wrapper_html: { class: 'form-name' } %>
-                <%= f.input :last_name, wrapper_html: { class: 'form-name' } %>
-                <%= f.input :photo, required: false %>
-                <%= f.input :photo_cache, as: :hidden %>
-                <%= f.submit class: "btn btn-primary" %>
+    <div class="profile-card">
+        <div class="row">
+            <div class="col-xs-12 col-sm-3">
+                <% if @user.photo.url.nil? %>
+                <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd-e9Kn0P1AAKT-EdAiaAVUvBtRVAJqONXIL0pJ402cOAzVi0i", class: "big-avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+                <% else %>
+                <%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill, class:"big-avatar" %>
                 <% end %>
+            </div>
+            <div class="col-xs-12 col-sm-9">
+                    <h3><%= "#{@user.first_name} #{@user.last_name} "%></h3>
+                    <h4>
+                    <%= "#{@user.role.capitalize}"%>
+                </h4><br>
+                    <%= simple_form_for @user, url: profile_path, method: :patch do |f| %>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <%= f.input :first_name, label_html: {class: 'pull-left'} %>
+                        </div>
+                        <div class="col-xs-6">
+                            <%= f.input :last_name, label_html: {class: 'pull-left'} %>
+                        </div>
+                    </div>
+                    <%= f.input :email, input_html: { autocomplete: "email" }, label_html: {class: 'pull-left'} %>
+                    <div class="row">
+                        <div class="col-xs-6">
+                          <%= f.input :country, collection: User::COUNTRIES, label_html: {class: 'pull-left'} %>
+                        </div>
+                        <div class="col-xs-6">
+                          <%= f.input :industry, collection: User::INDUSTRIES, label_html: {class: 'pull-left'} %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                          <%= f.input :years_experience, collection: User::YEARS_EXPERIENCE, label_html: {class: 'pull-left'} %>
+                        </div>
+                        <div class="col-xs-6">
+                          <%= f.input :hours_available_per_weeek, collection: User::HOURS_PER_WEEK, label_html: {class: 'pull-left'} %>
+                        </div>
+                    </div>
+                    <%= f.input :photo, required: false, label_html: {class: 'align-left'}, input_html: {class: "return-bottom"} %>
+                    <%= f.input :photo_cache, as: :hidden %>
+                    <%= f.submit class: "btn btn-primary" %>
+                    <% end %>
             </div>
         </div>
     </div>
 </div>
-<!-- cl_image_tag @user.photo, height: 300, width: 400, crop: :fill -->
