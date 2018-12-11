@@ -15,8 +15,14 @@ class ProjectPolicy < ApplicationPolicy
 
   def show?
     # only the person who created the project can see the project
-    user_is_owner?
+    user_is_manager?
   end
+
+  def edit?
+    # only the person who created the project can edit
+    user_is_manager?
+  end
+
 
   def update?
     # only the person who created the project can edit
@@ -29,17 +35,21 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def edit_to_close?
-  true
-end
+    user_is_expert? || user_is_manager? #true
+  end
 
-def close?
-  true
-end
+  def close?
+    user_is_expert? || user_is_manager? #true
+  end
 
 
   private
 
   def user_is_manager?
-    record.manager == user || record.manager == nil
+    record.manager == user || record.manager.nil?
+  end
+
+  def user_is_expert?
+    record.expert == user
   end
 end

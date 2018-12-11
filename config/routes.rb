@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   patch "profile", to: "pages#profile_update"
   get "contact_us", to: "pages#contact_us"
 
-  get "close/:project_id/:id", to: "tasks#edit_to_close", as: :edit_task_to_close
+  get "close/:project_id/tasks/:id", to: "tasks#edit_to_close", as: :edit_task_to_close
   patch "/close/:project_id/tasks/:id", to: "tasks#close", as: :closetask
   # resources :tasks, only: [ :show, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

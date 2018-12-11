@@ -18,7 +18,9 @@
                               <%= link_to "Edit", edit_project_task_path( task.project, task) %>
                             <% end %>
                             <%= link_to "Review", project_tasks_path %>
-                            <%= link_to "Close", edit_task_to_close_path( task.project, task) %>
+                            <%  if policy(task).close? %>
+                              <%= link_to "Close", edit_task_to_close_path( task.project, task) %>
+                            <% end %>
                             <% if policy(task).destroy? %>
                                <%= link_to "Destroy", project_task_path(task.project.id, task), method: :delete, data: { confirm: 'Are you sure?' }  %>
                             <% end %>
@@ -70,12 +72,10 @@
 
             <div>
               <div class="project-task-card-actions">
-                <% if policy(Task).create? %>
-
-                        <%= link_to "new Task", new_project_task_path, class: "btn btn-success" %>
-                        <%= link_to "Projects", projects_path %>
-
+                <% if policy(Project.find(params[:project_id])).show? %>
+                    <%= link_to "new Task", new_project_task_path, class: "btn btn-success" %>
                 <% end %>
+                <%= link_to "Projects", projects_path %>
               </div>
             </div>
 

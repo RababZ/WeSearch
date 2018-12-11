@@ -8,34 +8,55 @@ class TaskPolicy < ApplicationPolicy
     end
   end
 
-def create?
-  true
-end
+  def create?
+    new?
+  end
 
-def new?
-  true
-end
+  def new?
+    true#record.project.manager == user
+  end
 
-def edit?
-  update?
-end
+  def edit?
+    update?
+  end
 
-def destroy?
-  #record.project.manager == user
-  record.project.manager == user
-end
+  def destroy?
+    #record.project.manager == user
+    #record.project.manager == user
+    user_is_manager?
+  end
 
-def update?
-  #record.project.manager == user
-  (record.project.expert == user) || (record.project.manager == user)
-end
+  def update?
+    #record.project.manager == user
+    #(record.project.expert == user) || (record.project.manager == user)
+    user_is_expert? || user_is_manager?
+  end
 
-def edit_to_close?
-  true
-end
+  def edit_to_close?
+    user_is_expert? || user_is_manager? #true
+  end
 
-def close?
-  true
-end
+  def close?
+    (user_is_expert? || user_is_manager?) && !task_is_closed? && !user_is_client? #true
+  end
+
+
+  private
+
+  def user_is_manager?
+    record.project.manager == user || record.project.manager.nil?
+  end
+
+  def user_is_expert?
+    record.project.expert == user
+  end
+
+  def user_is_client?
+    record.project.client == user
+  end
+
+  def task_is_closed?
+    record.status == true
+  end
 
 end
