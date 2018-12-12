@@ -32,7 +32,14 @@ user = User.create(
     email: "expert@email.com",
     password: "123456",
     role: 'expert',
-    availability: [false, true].sample
+    description: 'Lorem ipsum dolor sit amet, nam partem possit at. Ea eum paulo mundi graece, stet reformidans ius eu. Mel prompta corrumpit ea. Sea tempor constituto eloquentiam no, detraxit platonem duo ex. An timeam molestiae scriptorem pri, at eam illud graecis. Verear labitur ut sea, sit appareat suavitate ei, qui libris malorum ei. Et ubique aliquip deleniti vel.
+
+                  Mea ea oratio voluptatibus, scaevola repudiandae at qui. Eos aeque sensibus temporibus ad. Te mel causae sententiae, cum ignota nusquam copiosae ut, sit urbanitas reformidans eu. No est mediocrem similique mediocritatem, ne mel temporibus conclusionemque, cu epicurei placerat imperdiet pro. In nec alienum maluisset, vim zril scaevola recteque in. Ei nam ullum virtute, rebum dolore vix an. An ornatus voluptua verterem duo, qui commune laboramus persecuti in.
+
+                  Simul prompta pro ad, ad splendide disputationi vis. Appetere elaboraret honestatis id pri. Ei eam tamquam habemus, quas omittantur sit ne. Sea impetus suavitate persecuti no, minim gloriatur et pro.',
+    availability: [false, true].sample,
+    country: ["France", "Morocco", "Germany", "South Africa"].sample
+    hours_available_per_weeek: [5, 10, 15, 20, 25, 30, 35, 40].sample
   )
 puts "Main expert created"
 
@@ -68,6 +75,11 @@ end
     email: Faker::Internet.email,
     password: "123456",
     role: 'expert',
+    description: 'Lorem ipsum dolor sit amet, nam partem possit at. Ea eum paulo mundi graece, stet reformidans ius eu. Mel prompta corrumpit ea. Sea tempor constituto eloquentiam no, detraxit platonem duo ex. An timeam molestiae scriptorem pri, at eam illud graecis. Verear labitur ut sea, sit appareat suavitate ei, qui libris malorum ei. Et ubique aliquip deleniti vel.
+
+                  Mea ea oratio voluptatibus, scaevola repudiandae at qui. Eos aeque sensibus temporibus ad. Te mel causae sententiae, cum ignota nusquam copiosae ut, sit urbanitas reformidans eu. No est mediocrem similique mediocritatem, ne mel temporibus conclusionemque, cu epicurei placerat imperdiet pro. In nec alienum maluisset, vim zril scaevola recteque in. Ei nam ullum virtute, rebum dolore vix an. An ornatus voluptua verterem duo, qui commune laboramus persecuti in.
+
+                  Simul prompta pro ad, ad splendide disputationi vis. Appetere elaboraret honestatis id pri. Ei eam tamquam habemus, quas omittantur sit ne. Sea impetus suavitate persecuti no, minim gloriatur et pro.',
     years_experience: ["2+ years", "5+ years", "10+ years"].sample,
     industry: ["Agriculture", "Finance", "Manufacturing", "Energy", "Communications"].sample,
     country: ["France", "Morocco", "Germany", "South Africa"].sample,
