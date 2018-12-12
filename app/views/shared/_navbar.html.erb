@@ -11,8 +11,7 @@
     <a href="#" class="navbar-wagon-item navbar-wagon-link"><%= current_user.email %></a>
     <% end %>
       <!-- Links when logged in -->
-      <%= link_to "Who we are", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "How it works", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "About us", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Our services", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Contact us", contact_us_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
@@ -32,6 +31,11 @@
               <% end %>
             </li>
             <li>
+              <%= link_to conversations_path do %>
+                <%= t(".conversation_messages", default: "Messages") %>
+              <% end %>
+            </li>
+            <li>
               <%= link_to projects_path do %>
                 <%= t(".projects", default: "Projects") %>
               <% end %>
@@ -42,16 +46,7 @@
                   <%= t(".experts", default: "Experts") %>
                 <% end %>
               </li>
-              <li>
-                <%= link_to "#" do %>
-                  <%= t(".clients", default: "Clients") %>
-                <% end %>
-              </li>
             <% end %>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
-              <% end %>
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
