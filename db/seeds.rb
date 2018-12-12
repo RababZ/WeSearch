@@ -38,7 +38,7 @@ user = User.create(
 
                   Simul prompta pro ad, ad splendide disputationi vis. Appetere elaboraret honestatis id pri. Ei eam tamquam habemus, quas omittantur sit ne. Sea impetus suavitate persecuti no, minim gloriatur et pro.',
     availability: [false, true].sample,
-    country: ["France", "Morocco", "Germany", "South Africa"].sample
+    country: ["France", "Morocco", "Germany", "South Africa"].sample,
     hours_available_per_weeek: [5, 10, 15, 20, 25, 30, 35, 40].sample
   )
 puts "Main expert created"

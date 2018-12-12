@@ -11,6 +11,10 @@ Rails.application.routes.draw do
 
   get "close/:project_id/tasks/:id", to: "tasks#edit_to_close", as: :edit_task_to_close
   patch "/close/:project_id/tasks/:id", to: "tasks#close", as: :closetask
+
+  resources :conversations do
+    resources :messages
+  end
   # resources :tasks, only: [ :show, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
