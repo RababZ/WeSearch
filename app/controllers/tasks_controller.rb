@@ -2,6 +2,7 @@ class TasksController < ApplicationController
 
   def index
     @tasks = policy_scope(Task).where(project: params[:project_id])
+    @project = Project.find(params[:project_id])
   end
 
   def new
