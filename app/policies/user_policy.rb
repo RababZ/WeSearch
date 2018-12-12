@@ -16,4 +16,8 @@ class UserPolicy < ApplicationPolicy
     profile?
   end
 
+  def show?
+    true
+  end
+
 end

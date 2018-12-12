@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :projects do
     resources :tasks, only: [:index, :new, :create, :edit, :update, :destroy]
   end
-  resources :users, only: [:index]
+  resources :users, only: [:index, :show]
   get "profile", to: "pages#profile"
   patch "profile", to: "pages#profile_update"
   get "contact_us", to: "pages#contact_us"
