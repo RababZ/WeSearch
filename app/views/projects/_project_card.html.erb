@@ -9,10 +9,18 @@
         <div class="col-xs-12 col-sm-4 flex-right">
             <p class="project-card-content font-size-big">
                 <% project.tasks.each do |task| %>
-                  <% if task.status == true %>
-                    <i class="fas fa-square fa-green"></i>
+                  <% if task.status == false %>
+                    <% if policy(task).edit? %>
+                        <%= link_to  edit_project_task_path(project, task) do %>
+                          <i class="fas fa-square fa-green"></i>
+                        <% end %>
+                    <% end %>
                   <% else %>
-                    <i class="fas fa-square fa-gray"></i>
+                    <% if policy(task).edit? %>
+                      <%= link_to  edit_project_task_path(project, task) do %>
+                        <i class="fas fa-square fa-gray"></i>
+                      <% end %>
+                    <% end %>
                   <% end %>
                 <% end %>
             </p>
@@ -23,7 +31,7 @@
         <div class='col-xs-12 col-sm-8'>
             <p class="project-card-content font-size-big">
                 Manager:
-                <%= project.manager.nil? ? "Not assigned yet" : "#{project.manager.first_name} #{project.manager.last_name}" %>
+                <%= project.manager.nil? ? "Not assigned yet" : "#{project.manager.first_name} #{project.manager.last_name} (#{project.manager.email}" %>
             </p>
             <p class="project-card-content font-size-big">
                 Industry:
