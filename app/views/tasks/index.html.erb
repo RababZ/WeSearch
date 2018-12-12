@@ -1,58 +1,60 @@
 <div class="container">
-<div class="main-container">
-
+  <div class="main-container">
     <div class="project-container">
-        <h1>Project</h1>
+        <div class="project-main">
+          <div class="project-content">
+            <h2><%=  @project.title %></h2>
+            <h3><%=  @project.description %></h3>
+            <h3>start date: <%=  @project.start_date %></h3>
+            <h3>Deadline: <%=  @project.deadline %></h3>
+            <h3>Client: <%=  @project.client.email %></h3>
+          </div>
+        </div>
     </div>
 
-
-  <div class="tasks-container">
-
-    <div class="row">
-
-            <% @tasks.each do |task| %>
-            <div class="task-card">
-                <div class="task-card-content">
-                    <div class="col-xs-12 col-sm-3">
-                        <h3 class="task-card-title"><%= task.title %></h3>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                        <p>
-                            <div class="task-card-body"><p><%= task.description %></p></div>
-                            <div class="task-card-actions">
-                            <% if policy(task).edit? %>
-                              <%= link_to "Edit", edit_project_task_path( task.project, task) %>
-                            <% end %>
-                            <%= link_to "Review", project_tasks_path %>
-                            <%  if policy(task).close? %>
-                              <%= link_to "Close", edit_task_to_close_path( task.project, task) %>
-                            <% end %>
-                            <% if policy(task).destroy? %>
-                               <%= link_to "Destroy", project_task_path(task.project.id, task), method: :delete, data: { confirm: 'Are you sure?' }  %>
-                            <% end %>
-                        </div>
-                        </p>
-                    </div>
-                    <div class="col-xs-12 col-sm-3">
-                        <div>
-                          <p>
-                            <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
-                            Expert:  <%= task.project.expert.nil? ? "Not yet assigned" : task.project.expert.email %>
-                          </p>
-                        </div>
-                        <div class="message-status">
-                          <% if task.status == true %>
-                          <p class="status accepted">Closed</p>
-                          <% else %>
-                          <p class="status pending">Pending</p>
-                          <% end %>
-
-                        </div>
-
-                    </div>
+    <div class="tasks-container">
+      <% @tasks.each do |task| %>
+        <div class="task-card">
+          <div class="row">
+            <div class="task-card-content">
+              <div class="col-xs-12 col-sm-3">
+                <h3 class="task-card-title"><%= task.title %></h3>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="task-card-body"><p><%= task.description %></p></div>
+                <div class="task-card-actions"><p>
+                  <% if policy(task).edit? %>
+                    <%= link_to "Edit", edit_project_task_path( task.project, task) %>
+                  <% end %>
+                  <%= link_to "Review", project_tasks_path %>
+                  <%  if policy(task).close? %>
+                    <%= link_to "Close", edit_task_to_close_path( task.project, task) %>
+                  <% end %>
+                  <% if policy(task).destroy? %>
+                     <%= link_to "Destroy", project_task_path(task.project.id, task), method: :delete, data: { confirm: 'Are you sure?' }  %>
+                  <% end %>
+                </p>
                 </div>
+              </div>
+              <div class="col-xs-12 col-sm-3">
+                <!-- <div>
+                  <p>
+                    <%#= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+                    Expert:  <%#= task.project.expert.nil? ? "Not yet assigned" : task.project.expert.email %>
+                  </p>
+                </div> -->
+                <div class="message-status">
+                  <% if task.status == true %>
+                  <p class="status accepted">Closed</p>
+                  <% else %>
+                  <p class="status pending">Pending</p>
+                  <% end %>
+                </div>
+              </div>
             </div>
-            <% end %>
+          </div>
+        </div>
+      <% end %>
 
 
           <% if @tasks.empty? %>
@@ -85,19 +87,8 @@
               </div>
             </div>
 
-        </div>
-
+    </div>
   </div>
-
-
-
-
-
-
-
-
-
-</div>
 </div>
 
 
