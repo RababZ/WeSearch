@@ -13,6 +13,10 @@ class UsersController < ApplicationController
     if params[:hours_available_per_weeek] && !params[:hours_available_per_weeek].empty?
       @users = @users.where(hours_available_per_weeek: params[:hours_available_per_weeek])
     end
+  end
 
+  def show
+    @user = User.find(params[:id])
+    authorize @user
   end
 end
