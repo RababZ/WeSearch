@@ -1,28 +1,29 @@
 <div class="container">
-<div class="row">
-    <div class="col-xs-12 col-md-10 col-md-offset-1">
-  <% @messages.each do |message| %>
-    <% if message.body %>
-      <% user = User.find(message.user_id) %>
-      <div class="item">
-        <h3><strong><%= user.email %></strong><%= message.message_time %></h3>
-        <div class="message">
-          <%= message.body %>
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1">
+            <% @messages.each do |message| %>
+            <div class="project-card">
+                <% if message.body %>
+                <% user = User.find(message.user_id) %>
+                <h3><strong><%= user.first_name %> <%= user.last_name %></strong></h3>
+                <p><% user.email %></p>
+                <h4><%= message.message_time %></h4>
+                <%= message.body %>
+                <% end %>
+            </div>
+            <% end %>
         </div>
-      </div>
-    <% end %>
-  <% end %>
-</div>
-</div>
-
-
-  <div class="row">
-    <div class="col-xs-12 col-md-10 col-md-offset-1">
-      <%= simple_form_for [@conversation, @message] do |f| %>
-        <%= f.input :body, label_html: {class: 'pull-left'} %>
-        <%= f.input :user_id, value: current_user.id, as: :hidden %>
-        <%= f.submit "send reply", class: "btn btn-primary" %>
-      <% end %>
     </div>
-  </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1">
+            <div class="project-card">
+                <h3>New Message</h3>
+                <%= simple_form_for [@conversation, @message] do |f| %>
+                <%= f.input :body, label_html: {class: 'pull-left'} %>
+                <%= f.input :user_id, value: current_user.id, as: :hidden %>
+                <%= f.submit "send message", class: "btn btn-primary" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
 </div>
