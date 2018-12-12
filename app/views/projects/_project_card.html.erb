@@ -14,12 +14,16 @@
                         <%= link_to  edit_project_task_path(project, task) do %>
                           <i class="fas fa-square fa-green"></i>
                         <% end %>
+                      <% else %>
+                        <i class="fas fa-square fa-green"></i>
                     <% end %>
                   <% else %>
                     <% if policy(task).edit? %>
                       <%= link_to  edit_project_task_path(project, task) do %>
                         <i class="fas fa-square fa-gray"></i>
                       <% end %>
+                    <% else %>
+                      <i class="fas fa-square fa-gray"></i>
                     <% end %>
                   <% end %>
                 <% end %>
