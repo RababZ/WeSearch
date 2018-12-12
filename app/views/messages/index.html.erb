@@ -1,17 +1,19 @@
 <div class="container">
-
+<div class="row">
+    <div class="col-xs-12 col-md-10 col-md-offset-1">
   <% @messages.each do |message| %>
     <% if message.body %>
       <% user = User.find(message.user_id) %>
       <div class="item">
-        <h3><strong><% user.email %></strong><% message.message_time %></h3>
+        <h3><strong><%= user.email %></strong><%= message.message_time %></h3>
         <div class="message">
-          <% message.body %>
+          <%= message.body %>
         </div>
       </div>
     <% end %>
   <% end %>
-
+</div>
+</div>
 
 
   <div class="row">
