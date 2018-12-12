@@ -17,36 +17,74 @@
 
 <div class="filter-container">
   <div class="container">
+    <form action="#" class="form-inline">
     <%= form_tag users_path , method: :get do %>
-        Country:
-        <select name="country">
+        <!-- Country: -->
+        <!-- <select name="country"> -->
+        <select name="country" class="form-control">
+          <option value="" hidden>Country</option>
           <option value=""></option>
-          <% @all_users.each do |user| %>
-            <option value="<%= user.country %>"><%= user.country %></option>
+          <% User::COUNTRIES.each do |country| %>
+            <option value="<%= country %>"><%= country %></option>
           <% end %>
         </select>
-        Industry:
-        <select name="industry">
+        <!-- Industry: -->
+        <select name="industry" class="form-control">
+          <option value="" hidden>Industry</option>
           <option value=""></option>
-          <% @all_users.each do |user| %>
-            <option value="<%= user.industry %>"><%= user.industry %></option>
+          <% User::INDUSTRIES.each do |industry| %>
+            <option value="<%= industry %>"><%= industry %></option>
           <% end %>
         </select>
-        Availability:
-        <select name="availability">
+    <!--     Availability:
+        <select name="availability" class="form-control">
           <option value=""></option>
-          <option value="<%= true %>">Yes</option>
-          <option value="<%= false %>">No</option>
+          <option value="<%#= true %>">Yes</option>
+          <option value="<%#= false %>">No</option>
+        </select> -->
+        <select name="hours_available_per_weeek" class="form-control">
+          <option value="" hidden>Availability per week</option>
+          <option value=""></option>
+            <option value="5">More than 5 hours</option>
+            <option value="10">More than 10 hours</option>
+            <option value="15">More than 15 hours</option>
+            <option value="20">More than 20 hours</option>
         </select>
       <input type="submit" class="btn btn-primary">
     <% end %>
+    </form>
   </div>
 </div>
 <div class="container">
-  <ul>
-    <% @users.each do |user| %>
-    <li><%= user.email %></li>
-    <% end %>
+  <% @users.each do |user| %>
+    <div class="users-card">
+      <div class="row">
+        <div class="col-xs-12 col-sm-2 flex-center">
+          <% if user.photo.url.nil? %>
+            <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd-e9Kn0P1AAKT-EdAiaAVUvBtRVAJqONXIL0pJ402cOAzVi0i", class: "medium-avatar" %>
+          <% else %>
+            <%= cl_image_tag user.photo, height: 300, width: 400, crop: :fill, class:"medium-avatar" %>
+          <% end %>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <h3><%= "#{user.first_name.capitalize} #{user.last_name.capitalize}"%></h3>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <p><i class="fas fa-map-marker-alt"></i><%= " #{user.country}" %></p>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <p><%= "#{user.description[0,200]}..." %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 flex-right user-card-actions">
+          <%= link_to "More", profile_path(user) %>
+          <a href="#" class="far fa-envelope"><%= "  #{user.email}" %></a>
+        </div>
+
+      </div>
+    </div>
+  <% end %>
   </ul>
 </div>
 
