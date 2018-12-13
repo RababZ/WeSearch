@@ -8,6 +8,12 @@
             <h3>start date: <%=  @project.start_date %></h3>
             <h3>Deadline: <%=  @project.deadline %></h3>
             <h3>Client: <%=  @project.client.email %></h3>
+            <h3>nb_tasks: <%=  @project.nb_tasks %></h3>
+            <h3>nb_hours: <%=  @project.nb_hours %></h3>
+            <h3>industry: <%=  @project.industry %></h3>
+            <h3>expert: <%=  @project.expert.first_name + " " + @project.expert.first_name %></h3>
+            <h3>approved: <%=  @project.approved %></h3>
+            <h3>status: <%=  @project.status %></h3>
           </div>
         </div>
     </div>
@@ -19,6 +25,8 @@
             <div class="task-card-content">
               <div class="col-xs-12 col-sm-3">
                 <h3 class="task-card-title"><%= task.title %></h3>
+                <h3 class="task-card-title">start date: <%= task.start_date %></h3>
+                <h3 class="task-card-title">deadline: <%= task.deadline %></h3>
               </div>
               <div class="col-xs-12 col-sm-6">
                 <div class="task-card-body"><p><%= task.description %></p></div>
@@ -45,10 +53,13 @@
                 </div> -->
                 <div class="message-status">
                   <% if task.status == true %>
-                  <p class="status accepted">Closed</p>
+                    <p class="status accepted">Closed</p>
+                    <p>work hours: <%= task.work_hours %></p>
                   <% else %>
-                  <p class="status pending">Pending</p>
+                    <p class="status pending">Pending</p>
+                    <p>deadline: <%= task.deadline %></p>
                   <% end %>
+
                 </div>
               </div>
             </div>
