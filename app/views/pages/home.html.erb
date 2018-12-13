@@ -1,26 +1,61 @@
 
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(50,50,50,0.5) 0%, rgba(50,50,50,0.3) 50%), url('https://images.pexels.com/photos/1451448/pexels-photo-1451448.jpeg?auto=compress&cs=tinysrgb&h=650&w=940');">
-  <div class="banner-content">
-    <h1>WISOR</h1>
-    <h3>Local insights at your fingertips</h3>
-    <br>
-    <div class="container">
-      <div class="row">
-        <% if user_signed_in? && current_user.role == "client" %>
-          <div class="col-xs-12">
-            <%= link_to "New project", new_project_path, class: "btn btn-success" %>
+
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <div class="banner" style="background-image: linear-gradient(-225deg, rgba(50,50,50,0.5) 0%, rgba(50,50,50,0.3) 50%), url('https://images.pexels.com/photos/1451448/pexels-photo-1451448.jpeg?auto=compress&cs=tinysrgb&h=650&w=940');">
+        <div class="banner-content">
+          <h1>WISOR</h1>
+          <h3>Local insights at your fingertips</h3>
+          <br>
+          <div class="container">
+            <div class="row">
+              <% if user_signed_in? && current_user.role == "client" %>
+                <div class="col-xs-12">
+                  <%= link_to "New project", new_project_path, class: "btn btn-success" %>
+                </div>
+              <% elsif user_signed_in? %>
+                <div class="col-xs-12">
+                  <%= link_to "My projects", projects_path, class: "btn btn-success" %>
+                </div>
+              <% else %>
+                <div class="col-xs-12">
+                  <%= link_to "Become a knowledge professional", new_user_registration_path, class: "btn btn-success btn-side-mgn" %>
+                  <%= link_to "Become a client", new_user_registration_path, class: "btn btn-success btn-side-mgn" %>
+                </div>
+              <% end %>
+            </div>
           </div>
-        <% elsif user_signed_in? %>
-          <div class="col-xs-12">
-            <%= link_to "My projects", projects_path, class: "btn btn-success" %>
-          </div>
-        <% else %>
-          <div class="col-xs-12">
-            <%= link_to "Become a knowledge professional", new_user_registration_path, class: "btn btn-success btn-side-mgn" %>
-            <%= link_to "Become a client", new_user_registration_path, class: "btn btn-success btn-side-mgn" %>
-          </div>
-        <% end %>
+        </div>
       </div>
     </div>
+    <div class="item">
+      <div class="about-us-banner" style="background-image: linear-gradient(-225deg, rgba(50,50,50,0.5) 0%, rgba(50,50,50,0.3) 50%), url('https://images.pexels.com/photos/1061588/pexels-photo-1061588.jpeg?auto=compress&cs=tinysrgb&h=650&w=940');">
+        <div class="about-us-content">
+          <h1>WiSor is an Africa-focused platform that connects businesses to knowledge professionals.</h1><br>
+          <p>Aiming to bridge the critical knowledge gap on the diverse realities of African economies, we offer you a network of leading knowledge professionals.</p>
+          <p>They will help you answer your critical questions on the African markets through regular, rigorous and comparative research.</p>
+        </div>
+    </div>
+
   </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>

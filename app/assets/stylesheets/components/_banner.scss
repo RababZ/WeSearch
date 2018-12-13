@@ -45,3 +45,40 @@
   }
 }
 
+.about-us-banner {
+  position: relative;
+  // z-index: 1;
+  // margin-top: -55px;
+  color: white;
+  text-align: left;
+  height: 100vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.about-us-content {
+  // height: auto;
+  height: 100vh;
+  padding-top: 80px;
+  // padding-bottom: 30px;
+  background-color: #00000078;
+  width: 50vw;
+  padding-left: 80px;
+  padding-right: 30px;
+  margin-left: 10vw;
+
+  p {
+    font-size: 25px;
+    font-weight: 400;
+    color: white;
+    opacity: 0.6;
+    margin-bottom: 30px;
+  }
+
+  h1 {
+    color: white;
+  }
+}
