@@ -16,7 +16,7 @@
         <% end %>
       </div>
       <div role="tabpanel" class="tab-pane" id="pending-projects">
-        <% @projects.where(approved: false).each do |project| %>
+        <% @projects.where(approved: false, status: false).each do |project| %>
           <%= render "project_card", project: project %>
         <% end %>
       </div>
