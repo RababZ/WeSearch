@@ -1,62 +1,32 @@
-
 <div class="wrap container">
 
-<!-- Tabs html -->
+  <div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+      <li role="presentation" class="active"><a href="#current-projects" aria-controls="current-projects" role="tab" data-toggle="tab">Current projects</a></li>
+      <li role="presentation"><a href="#pending-projects" aria-controls="pending-projects" role="tab" data-toggle="tab">Pending projects</a></li>
+      <li role="presentation"><a href="#past-projects" aria-controls="past-projects" role="tab" data-toggle="tab">Past projects</a></li>
+    </ul>
 
-<!-- <ul class="nav nav-tabs">
-  <li class="active"><a href="#">Pending projects</a></li>
-  <li><a href="#">Current projects</a></li>
-  <li><a href="#">Past projects</a></li>
-</ul>
- -->
-  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-    <div class="panel panel-default">
-      <div class="panel-heading" role="tab" id="headingOne">
-        <h4 class="panel-title">
-          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-            Pending projects
-          </a>
-        </h4>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="current-projects">
+        <% @projects.where(approved: true, status: false).each do |project| %>
+          <%= render "project_card", project: project %>
+        <% end %>
       </div>
-      <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-        <div class="panel-body">
-          <% @projects.where(approved: false).each do |project| %>
-            <%= render "project_card", project: project %>
-          <% end %>
-        </div>
+      <div role="tabpanel" class="tab-pane" id="pending-projects">
+        <% @projects.where(approved: false).each do |project| %>
+          <%= render "project_card", project: project %>
+        <% end %>
       </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading" role="tab" id="headingTwo">
-        <h4 class="panel-title">
-          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            Current projects
-          </a>
-        </h4>
-      </div>
-      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-        <div class="panel-body">
-          <% @projects.where(approved: true, status: false).each do |project| %>
-            <%= render "project_card", project: project %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading" role="tab" id="headingThree">
-        <h4 class="panel-title">
-          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            Past projects
-          </a>
-        </h4>
-      </div>
-      <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-        <div class="panel-body">
-          <% @projects.where(approved: true, status: true).each do |project| %>
-            <%= render "project_card", project: project %>
-          <% end %>
-        </div>
+      <div role="tabpanel" class="tab-pane" id="past-projects">
+        <% @projects.where(approved: true, status: true).each do |project| %>
+          <%= render "project_card", project: project %>
+        <% end %>
       </div>
     </div>
   </div>
+
 </div>
+
