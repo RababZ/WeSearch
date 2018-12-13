@@ -37,6 +37,7 @@
   padding: 0 20px;
 }
 
+
 /* Navbar link */
 .navbar-wagon-link {
   color: #616668;
@@ -45,6 +46,16 @@
 .navbar-wagon-link:hover {
   color: $dark-gray;
   text-decoration: none;
+}
+
+.navbar-wagon-item .navbar-wagon-link .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background: red;
+  color: white;
 }
 
 /* Dropdown menu */

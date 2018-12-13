@@ -8,7 +8,7 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <% if user_signed_in? %>
-    <a href="#" class="navbar-wagon-item navbar-wagon-link"><%= current_user.email %></a>
+    <a href="#" class="navbar-wagon-item navbar-wagon-link"><%= current_user.email %><span class="badge"><%=  Project.pending %></span></a>
     <% end %>
       <!-- Links when logged in -->
       <%= link_to "About us", "#", class: "navbar-wagon-item navbar-wagon-link" %>
@@ -43,7 +43,7 @@
             <% if current_user.role == "manager" %>
               <li>
                 <%= link_to users_path do %>
-                  <%= t(".experts", default: "Experts") %>
+                  <%= t(".experts", default: "Experts")  %>
                 <% end %>
               </li>
             <% end %>
