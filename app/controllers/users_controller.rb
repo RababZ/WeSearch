@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     end
 
     if params[:hours_available_per_weeek] && !params[:hours_available_per_weeek].empty?
-      @users = @users.where(hours_available_per_weeek: params[:hours_available_per_weeek])
+      @users = @users.where("hours_available_per_weeek > ?", params[:hours_available_per_weeek])
     end
   end
 

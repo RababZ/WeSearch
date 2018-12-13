@@ -1,9 +1,10 @@
 .filter-container {
-  background-color: #034640;
+  background-color: $green;
   display: flex;
-  padding-bottom: 40px;
-  padding-top: 40px;
+  padding-bottom: 30px;
+  padding-top: 30px;
   margin-bottom: 40px;
+  justify-content: center;
 }
 
 .users-card {
