@@ -8,7 +8,7 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <% if user_signed_in? %>
-    <a href="#" class="navbar-wagon-item navbar-wagon-link"><%= current_user.email %><span class="badge"><%=  Project.pending %></span></a>
+    <a href="#" class="navbar-wagon-item navbar-wagon-link"><%= current_user.email %></a>
     <% end %>
       <!-- Links when logged in -->
       <%= link_to "About us", "#", class: "navbar-wagon-item navbar-wagon-link" %>
@@ -21,6 +21,7 @@
         <div class="dropdown">
           <% if current_user.photo.url.nil? %>
             <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd-e9Kn0P1AAKT-EdAiaAVUvBtRVAJqONXIL0pJ402cOAzVi0i", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <% if (current_user.role == "manager") && (Project.pending != "0")%><span class="badge"><%=  Project.pending %></span><% end %>
           <% else %>
             <%= cl_image_tag current_user.photo, height: 300, width: 400, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% end %>
