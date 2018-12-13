@@ -10,8 +10,7 @@
   <% if @project.id == nil %>
     <%= f.submit "add project", class: "btn btn-primary" %>
     <% else %>
-      <%= f.input :expert, collection: [User.where(role: "expert").each do |expert| expert.first_name end], label_html: {class: 'pull-left'} %>
-      <%= f.select :expert_id, options_from_collection_for_select(User.where(role: "expert"), 'id', 'last_name'), :prompt => 'Select an expert' %>
+      <%= f.input :expert, collection: User.where(role: "expert"), label_method: :full_name, value_method: :id, label_html: {class: 'pull-left'} %>
     <%= f.submit "save changes", class: "btn btn-primary" %>
   <% end %>
 <% end %>

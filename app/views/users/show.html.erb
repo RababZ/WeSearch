@@ -13,7 +13,7 @@
         <h2><%= "#{@user.first_name} #{@user.last_name}"%><%= link_to conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: "post" do %>
             <i class="fas fa-envelope"></i>
           <% end %></h2>
-        <h3><%= "#{@user.role.capitalize}"%></h3><br>
+        <h3><strong><%= "#{@user.role.capitalize}"%></strong></h3><br>
       </div>
       <div class="col-xs-12 col-sm-7">
           <h4><i class="fas fa-map-marker-alt"></i><%= "  #{@user.country}" %></h4>

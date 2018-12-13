@@ -12,4 +12,7 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   #scope :managers, -> (){self.where(role: "manager")}
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
