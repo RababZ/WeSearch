@@ -10,8 +10,23 @@
   <% if @project.id == nil %>
     <%= f.submit "add a project", class: "btn btn-primary" %>
     <% else %>
-      <%= f.select :manager_id, options_from_collection_for_select(User.where(role: "manager"), 'id', 'email'), :prompt => 'Select a manager' %>
-      <%= f.select :expert_id, options_from_collection_for_select(User.where(role: "expert"), 'id', 'email'), :prompt => 'Select an expert' %>
-    <%= f.submit "edit project", class: "btn btn-primary" %>
+      <% if policy(@project).edit? %>
+      <div class="form-group integer optional project_nb_tasks form-group-valid">
+        <%=  label "project",:manager_id , "Manager", class: "form-control-label integer optional pull-left" %>
+        <%= f.select :manager_id, options_from_collection_for_select(User.where(role: "manager"), 'id', :userinfo), :prompt => 'Select a manager' %>
+      </div>
+
+        <%=  label "project_expert_id",:Expert, "Expert", class: "form-control-label integer optional pull-left" %>
+        <%= f.select :expert_id, options_from_collection_for_select(User.where(role: "expert"), 'id', :userinfo), :prompt => 'Select an expert' %>
+        <%#= f.check_box :approved, checked: @project.approved? %>
+        <%#= f.input :approved, :collection => ['Today', 'Tomorrow', 'In 3 Days'], :as => :radio %>
+        <%= f.input :approved,
+                    :collection => [[true, 'Approved'], [false, 'Not approved']],
+                    :label_method => :last,
+                    :value_method => :first,
+                    :as => :radio_buttons
+        %>
+      <% end %>
+    <%= f.submit "Save changes", class: "btn btn-primary" %>
   <% end %>
 <% end %>
