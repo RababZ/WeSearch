@@ -1,23 +1,23 @@
 <%= simple_form_for [@project] do |f| %>
   <%= f.input :title , label_html: {class: 'pull-left'}%>
   <%= f.input :description, label_html: {class: 'pull-left'} %>
-  <%= f.input :industry, label_html: {class: 'pull-left'} %>
+  <%= f.input :industry, collection: User::INDUSTRIES, label_html: {class: 'pull-left'} %>
   <%= f.input :start_date, label_html: {class: 'pull-left'}, as: :date, html5: true %>
   <%= f.input :deadline, label_html: {class: 'pull-left'}, as: :date, html5: true %>
   <%= f.input :expertise_level, collection: ["Research Analyst (less than 2 years experience)", "Research Specialist (more than 2 years experience)"], label_html: {class: 'pull-left'} %>
   <%= f.input :nb_hours, label_html: {class: 'pull-left'} %>
   <%= f.input :nb_tasks, label_html: {class: 'pull-left'} %>
   <% if @project.id == nil %>
-    <%= f.submit "add a project", class: "btn btn-primary" %>
+    <%= f.submit "add project", class: "btn btn-primary" %>
     <% else %>
+
       <% if policy(@project).edit? %>
       <div class="form-group integer optional project_nb_tasks form-group-valid">
         <%=  label "project",:manager_id , "Manager", class: "form-control-label integer optional pull-left" %>
         <%= f.select :manager_id, options_from_collection_for_select(User.where(role: "manager"), 'id', :userinfo), :prompt => 'Select a manager' %>
       </div>
 
-        <%=  label "project_expert_id",:Expert, "Expert", class: "form-control-label integer optional pull-left" %>
-        <%= f.select :expert_id, options_from_collection_for_select(User.where(role: "expert"), 'id', :userinfo), :prompt => 'Select an expert' %>
+       <%= f.input :expert, collection: User.where(role: "expert"), label_method: :userinfo, value_method: :id, label_html: {class: 'pull-left'} %>
         <%#= f.check_box :approved, checked: @project.approved? %>
         <%#= f.input :approved, :collection => ['Today', 'Tomorrow', 'In 3 Days'], :as => :radio %>
         <%= f.input :approved,
@@ -28,5 +28,6 @@
         %>
       <% end %>
     <%= f.submit "Save changes", class: "btn btn-primary" %>
+
   <% end %>
 <% end %>

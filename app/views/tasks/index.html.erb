@@ -1,19 +1,37 @@
 <div class="container">
-  <div class="main-container">
-    <div class="project-container">
-        <div class="project-main">
-          <div class="project-content">
-            <h2><%=  @project.title %></h2>
-            <h3><%=  @project.description %></h3>
-            <h3>start date: <%=  @project.start_date %></h3>
-            <h3>Deadline: <%=  @project.deadline %></h3>
-            <h3>Client: <%=  @project.client.email %></h3>
-            <h3>nb_tasks: <%=  @project.nb_tasks %></h3>
-            <h3>nb_hours: <%=  @project.nb_hours %></h3>
-            <h3>industry: <%=  @project.industry %></h3>
-            <h3>expert: <%=  @project.expert.first_name + " " + @project.expert.first_name %></h3>
-            <h3>approved: <%=  @project.approved %></h3>
-            <h3>status: <%=  @project.status %></h3>
+    <div class="main-container">
+        <div class="project-container">
+            <div class="project-main">
+                <div class="project-content">
+                    <h3><strong><%=  @project.title %></strong></h3>
+                    <h4><%=  @project.description %></h4>
+                    <br>
+                    <h4><i class="fas fa-calendar-alt"></i><strong>   Start date</strong> <%=  @project.start_date %></h4>
+                    <h4><i class="fas fa-stopwatch"></i><strong>   Deadline</strong> <%=  @project.deadline %></h4>
+                    <h4><i class="fas fa-industry"></i><strong>   Industry</strong> <%=  @project.industry %></h4>
+                    <h4><i class="fas fa-clock"></i><strong>   Duration</strong> <%=  @project.nb_hours %> hours</h4>
+                    <br>
+                    <h4><strong>Client</strong> <%=  @project.client.email %></h4>
+                    <h4><strong>Expert</strong> <%= @project.expert.nil? ? "Not assigned yet" : "#{@project.manager.first_name} #{@project.manager.last_name} (#{@project.manager.email}" %></h3>
+                <br>
+            <h4><strong><% if @project.approved %>
+              <i class="fas fa-check-circle"></i>
+            <% else %>
+              <i class="fas fa-times-circle"></i>
+            <% end %> Approved </strong></h4>
+            <h4><strong><% if @project.status %>
+              <i class="fas fa-check-circle"></i>
+            <% else %>
+              <i class="fas fa-times-circle"></i>
+            <% end %> Completed </strong></h4>
+            <br>
+            <div class="project-task-card-actions">
+                <% if policy(Project.find(params[:project_id])).show? %>
+                    <%= link_to "new Task", new_project_task_path, class: "btn btn-success" %>
+                <% end %>
+                <%= link_to "Projects", projects_path %>
+              </div>
+
           </div>
         </div>
     </div>
@@ -24,9 +42,11 @@
           <div class="row">
             <div class="task-card-content">
               <div class="col-xs-12 col-sm-3">
-                <h3 class="task-card-title"><%= task.title %></h3>
-                <h3 class="task-card-title">start date: <%= task.start_date %></h3>
-                <h3 class="task-card-title">deadline: <%= task.deadline %></h3>
+                <h3 class="task-card-title"><strong><%= task.title %></strong></h3>
+                <br>
+                <h4 class="task-card-title"><i class="fas fa-calendar-alt"></i>   Start date <%= task.start_date %></h4>
+                    <br>
+                    <h4 class="task-card-title"><i class="fas fa-stopwatch"></i>   Deadline: <%= task.deadline %></h3>
               </div>
               <div class="col-xs-12 col-sm-6">
                 <div class="task-card-body"><p><%= task.description %></p></div>
@@ -60,6 +80,7 @@
                     <p>deadline: <%= task.deadline %></p>
                   <% end %>
 
+
                 </div>
               </div>
             </div>
@@ -85,24 +106,6 @@
                     </div>
                 </div>
             <% end %>
-
-
-
-
-            <div>
-              <div class="project-task-card-actions">
-                <% if policy(Project.find(params[:project_id])).show? %>
-                    <%= link_to "new Task", new_project_task_path, class: "btn btn-success" %>
-                <% end %>
-                <%= link_to "Projects", projects_path %>
-              </div>
-            </div>
-
     </div>
   </div>
 </div>
-
-
-
-
-

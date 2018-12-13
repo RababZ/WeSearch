@@ -50,8 +50,11 @@
 
 .navbar-wagon-item .badge {
   position: absolute;
-  left: 20px;
-  background: $red;
+  top: 0px;
+  left: 27px;
+  padding: 3px 6px;
+  font-size: 14px;
+  background: rgba($red, .9);
 }
 
 /* Dropdown menu */
