@@ -1,7 +1,7 @@
 <div class="container">
   <div class="profile-show">
     <div class="row">
-        <div class="col-xs-12 col-sm-3 flex-center">
+        <div class="col-xs-12 col-sm-4 flex-center">
             <% if @user.photo.url.nil? %>
             <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd-e9Kn0P1AAKT-EdAiaAVUvBtRVAJqONXIL0pJ402cOAzVi0i", class: "big-avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
             <% else %>
@@ -9,22 +9,22 @@
             <% end %>
         </div>
 
-      <div class="col-xs-12 col-sm-6">
-        <h2><%= "#{@user.first_name} #{@user.last_name},"%></h2>
+      <div class="col-xs-12 col-sm-7">
+        <h2><%= "#{@user.first_name} #{@user.last_name}"%><%= link_to conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: "post" do %>
+            <i class="fas fa-envelope"></i>
+          <% end %></h2>
         <h3><%= "#{@user.role.capitalize}"%></h3><br>
       </div>
-      <div class="col-xs-12 col-sm-6">
+      <div class="col-xs-12 col-sm-7">
           <h4><i class="fas fa-map-marker-alt"></i><%= "  #{@user.country}" %></h4>
           <h4><i class="fas fa-industry"></i> <%= "  #{@user.industry}" %></h4>
           <h4><i class="fas fa-stopwatch"></i> <%= "  #{@user.hours_available_per_weeek} hours per week" %></h4>
       </div>
 
-      <div class="col-xs-12 col-sm-6"><br>
+      <div class="col-xs-12 col-sm-7"><br>
         <p><%= @user.description %></p><br>
         <!-- <p><strong>Contact: <%= @user.email %></p></strong> -->
-        <%= link_to conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: "post" do %>
-            <i class="fas fa-envelope fa-lg"></i>
-          <% end %>
+
       </div>
     </div>
   </div>

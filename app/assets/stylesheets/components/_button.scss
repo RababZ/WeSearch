@@ -12,3 +12,12 @@
   transition: all .5s ease;
   border: none;
 }
+
+.btn-secondary {
+  color: white;
+  background-color: rgba($gray, .6);
+}
+
+.btn-secondary:hover {
+    background-color: $gray;
+  }
