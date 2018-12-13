@@ -78,8 +78,7 @@
       </div>
       <div class="row">
         <div class="col-xs-12 flex-right user-card-actions">
-          <%#= link_to "Contact", user_path(user.id) %>
-          <a href=""></a>
+          <%#= link_to "More", user_path(user.id) %>
           <%= link_to conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post" do %>
             <i class="fas fa-envelope fa-lg"></i>
           <% end %>
