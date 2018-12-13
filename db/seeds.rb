@@ -7,19 +7,29 @@ User.destroy_all
 
 # Main Manager
 user = User.create(
-    first_name: Faker::Name::first_name,
-    last_name: Faker::Name::last_name,
-    email: "manager@email.com",
+    first_name: 'Trista',
+    last_name: 'Freier',
+    email: "trista.freier@wisor.com",
     password: "123456",
     role: 'manager'
   )
+
+# Second Manager
+user = User.create(
+    first_name: 'Nouha',
+    last_name: 'Abardazzou',
+    email: "nouha.Abardazzou@wisor.com",
+    password: "123456",
+    role: 'manager'
+  )
+
 puts "Main manager created"
 
 # Main Client
 user = User.create(
-    first_name: Faker::Name::first_name,
-    last_name: Faker::Name::last_name,
-    email: "client@email.com",
+    first_name: 'Rabab',
+    last_name: 'Zaitouni',
+    email: "rabab.zaitouni@gmail.com",
     password: "123456",
     role: 'client'
   )
@@ -27,19 +37,18 @@ puts "Main client created"
 
 # Main Expert
 user = User.create(
-    first_name: Faker::Name::first_name,
-    last_name: Faker::Name::last_name,
-    email: "expert@email.com",
+    first_name: 'Mehdi',
+    last_name: 'Ritab',
+    email: "mehdi.ritab@gmail.com",
     password: "123456",
     role: 'expert',
-    description: 'Lorem ipsum dolor sit amet, nam partem possit at. Ea eum paulo mundi graece, stet reformidans ius eu. Mel prompta corrumpit ea. Sea tempor constituto eloquentiam no, detraxit platonem duo ex. An timeam molestiae scriptorem pri, at eam illud graecis. Verear labitur ut sea, sit appareat suavitate ei, qui libris malorum ei. Et ubique aliquip deleniti vel.
-
-                  Mea ea oratio voluptatibus, scaevola repudiandae at qui. Eos aeque sensibus temporibus ad. Te mel causae sententiae, cum ignota nusquam copiosae ut, sit urbanitas reformidans eu. No est mediocrem similique mediocritatem, ne mel temporibus conclusionemque, cu epicurei placerat imperdiet pro. In nec alienum maluisset, vim zril scaevola recteque in. Ei nam ullum virtute, rebum dolore vix an. An ornatus voluptua verterem duo, qui commune laboramus persecuti in.
-
-                  Simul prompta pro ad, ad splendide disputationi vis. Appetere elaboraret honestatis id pri. Ei eam tamquam habemus, quas omittantur sit ne. Sea impetus suavitate persecuti no, minim gloriatur et pro.',
-    availability: [false, true].sample,
-    country: ["France", "Morocco", "Germany", "South Africa"].sample,
-    hours_available_per_weeek: [5, 10, 15, 20, 25, 30, 35, 40].sample
+    description: 'I have more than five years of experience in Market Research: Market Analysis, Market Segmentation and Competitive Analysis.
+    And I am working now as a full-time independent research analyst',
+    past_experience: 'Research Analyst for 5 years at McKinsey&Company, Paris.',
+    availability: true,
+    country: "Tunisia",
+    hours_available_per_weeek: 20,
+    years_experience: 6,
   )
 puts "Main expert created"
 

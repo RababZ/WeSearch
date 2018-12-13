@@ -50,8 +50,8 @@ class ProjectsController < ApplicationController
           div += rest
         end
         task = Task.create(
-          title: "Delivery" + (i + 1).to_s,
-          description: "Delivery",
+          title: "Deliverable" + (i + 1).to_s,
+          description: "Please write here the description of the deliverable before you mark it as complete.",
           project: @project,
           work_hours: div,
           status: false
