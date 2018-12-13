@@ -21,7 +21,10 @@
 
       <div class="col-xs-12 col-sm-6"><br>
         <p><%= @user.description %></p><br>
-        <p><strong>Contact: <%= @user.email %></p></strong>
+        <!-- <p><strong>Contact: <%= @user.email %></p></strong> -->
+        <%= link_to conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: "post" do %>
+            <i class="fas fa-envelope fa-lg"></i>
+          <% end %>
       </div>
     </div>
   </div>
