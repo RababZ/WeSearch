@@ -115,8 +115,7 @@ ActiveRecord::Schema.define(version: 2018_12_13_201120) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
-  add_foreign_key "messages", "conversations"
+   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "tasks", "projects"
   add_foreign_key "user_industries", "industries"

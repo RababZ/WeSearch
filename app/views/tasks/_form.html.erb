@@ -10,9 +10,9 @@
 <%= f.input :work_hours, label_html: {class: 'pull-left'} %>
 
 <% if @task.id == nil %>
-<%= f.submit "add a task", class: "btn btn-primary" %>
+<%= f.submit "Add deliverable", class: "btn btn-primary" %>
 <% else %>
 <%#= f.input :work_hours, label_html: {class: 'pull-left'} %>
-<%= f.submit "Update task", class: "btn btn-primary" %>
+<%= f.submit "Update", class: "btn btn-primary" %>
 <% end %>
 <% end %>
