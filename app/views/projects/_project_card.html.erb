@@ -1,7 +1,7 @@
 <div class="project-card">
     <div class="row">
         <div class='col-xs-12 col-sm-8'>
-            <h3 class="project-card-title"><strong><%= project.title %></strong></h3>
+            <h3 class="project-card-title"><strong><%= link_to project.title, project_tasks_path(project) %></strong></h3>
             <p class="project-card-content font-size-big">
                 <%= project.description %>
             </p><br>
@@ -33,21 +33,19 @@
 
     <div class="row">
         <div class='col-xs-12 col-sm-8'>
-            <p class="project-card-content font-size-big">
-                Manager:
-                <%= project.manager.nil? ? "Not assigned yet" : project.manager.userinfo %>
+            <p class="project-card-content font-size-big"><i class="fas fa-user-tie"></i><strong>   Manager</strong>    <%= project.manager.nil? ? "Not assigned yet" : project.manager.full_name %>
             </p>
-            <p class="project-card-content font-size-big">
-                Industry:
+            <p class="project-card-content font-size-big"><i class="fas fa-phone"></i><strong>   Client</strong>
+                <%= project.client.full_name %> (<%= project.client.phone_number.nil? ? " " : project.client.phone_number %>)
+            </p>
+            <p class="project-card-content font-size-big"><i class="fas fa-industry"></i><strong>   Industry</strong>
                 <%= project.industry %>
             </p>
-            <p class="project-card-content font-size-big">
-                Country:
+            <p class="project-card-content font-size-big"><i class="fas fa-map-marker-alt"></i><strong>   Country</strong>
                 <%= project.country %>
             </p>
-            <p class="project-card-content font-size-big">
-                Expert:
-                <%= project.expert.nil? ? "Not assigned yet" : project.expert.userinfo %>
+            <p class="project-card-content font-size-big"><i class="fas fa-user"></i><strong>   Expert</strong>
+                <%= project.expert.nil? ? "Not assigned yet" : project.expert.full_name %>
                     <% if project.expert %>
                     <%= link_to conversations_path(sender_id: current_user.id, recipient_id: project.expert.id), method: "post" do %>
                       <i class="fas fa-envelope"></i>

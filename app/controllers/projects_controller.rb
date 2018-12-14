@@ -83,8 +83,8 @@ class ProjectsController < ApplicationController
         div += rest
       end
       task = Task.create(
-        title: "Delivery" + (i + 1).to_s,
-        description: "Delivery",
+        title: "Deliverable " + (i + 1).to_s,
+        description: project.description,
         project: project,
         work_hours: div,
         status: false

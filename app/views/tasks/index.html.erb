@@ -32,10 +32,10 @@
             <% end %> Completed </strong></h4>
             <br>
             <div class="project-task-card-actions">
-                <% if policy(Project.find(params[:project_id])).show? %>
-                    <%= link_to "New deliverable", new_project_task_path, class: "btn btn-success" %>
-                <% end %>
-                <%= link_to "Projects", projects_path %>
+                <%# if policy(Project.find(params[:project_id])).show? %>
+                    <%#= link_to "New deliverable", new_project_task_path, class: "btn btn-success" %>
+                <%# end %>
+                <%= link_to "Back to projects", projects_path, class: "btn btn-success" %>
               </div>
 
           </div>
@@ -53,19 +53,22 @@
                 <h4 class="task-card-title"><i class="fas fa-calendar-alt"></i>   Start date <%= task.start_date %></h4>
               </div>
               <div class="col-xs-12 col-sm-6">
-                <div class="task-card-body"><p><%= task.description %></p></div>
-                <div class="task-card-actions"><p>
+                <div class="task-card-body">
+                  <p><%= task.description %></p>
+                </div>
+                <div class="task-card-actions">
+                  <p>
                   <% if policy(task).edit? %>
                     <%= link_to "Edit", edit_project_task_path( task.project, task) %>
                   <% end %>
-                  <%= link_to "Review", project_tasks_path %>
+                  <%#= link_to "Review", project_tasks_path %>
                   <%  if policy(task).close? && task.status == false %>
-                    <%= link_to "Close", edit_task_to_close_path( task.project, task) %>
+                    <%= link_to "Mark complete", edit_task_to_close_path( task.project, task) %>
                   <% end %>
                   <% if policy(task).destroy? %>
-                     <%= link_to "Destroy", project_task_path(task.project.id, task), method: :delete, data: { confirm: 'Are you sure?' }  %>
+                     <%= link_to "Delete", project_task_path(task.project.id, task), method: :delete, data: { confirm: 'Are you sure?' }  %>
                   <% end %>
-                </p>
+                  </p>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-3">
@@ -81,14 +84,14 @@
                     <h4 class="status accepted"><strong>Closed</strong></h4>
                   </div>
                     <br>
-                    <h4><i class="fas fa-clock"></i>  Hours</h4>
+                    <h4><i class="fas fa-clock"></i>     Hours</h4>
                     <p>   <%= task.work_hours %></p>
                   <% else %>
                   <div class="left-margin">
                     <h4 class="status pending"><strong>Pending</strong></h4>
                   </div>
                     <br>
-                    <h4><i class="fas fa-stopwatch"></i>  Deadline</h4>
+                    <h4><i class="fas fa-stopwatch"></i>     Deadline</h4>
                   <div class="left-margin">
                     <p><%= task.deadline %></p>
                   </div>
