@@ -20,4 +20,12 @@
 
 .btn-secondary:hover {
     background-color: $gray;
+    transition: all .5s ease;
+    border: none;
+  }
+
+.btn-success:hover {
+    color: white;
+    transition: all .5s ease;
+    border: none;
   }

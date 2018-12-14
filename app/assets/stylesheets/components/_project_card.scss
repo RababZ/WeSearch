@@ -18,6 +18,9 @@
 .project-card-title {
   font-size: 20px;
   margin: 10px;
+  a:hover {
+    text-decoration: none;
+  }
 }
 
 .project-card-content {
@@ -66,7 +69,8 @@
 }
 
 .font-size-big {
-  font-size: 14px;
+  font-size: 16px;
+  color: $gray;
 }
 
 .project-content {
@@ -78,3 +82,11 @@
   }
 }
 
+// .project-nav {
+//   a {
+//     color: $gray;
+//   }
+//   a:active {
+//     color: $green;
+//   }
+// }
