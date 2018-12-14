@@ -30,6 +30,7 @@ user = User.create(
     first_name: 'Trista',
     last_name: 'Freier',
     email: "trista.freier@gmail.com",
+    phone_number: '(+49) 176 32 02 34',
     password: "123456",
     role: 'client'
   )
@@ -41,6 +42,7 @@ user = User.create(
     first_name: 'Helen',
     last_name: 'Brook',
     email: "helen.brook@gmail.com",
+    phone_number: '(+39) 123 62 02 99',
     password: "123456",
     role: 'client'
 )
@@ -52,6 +54,7 @@ user = User.create(
     first_name: 'David',
     last_name: 'Heather',
     email: "david.heather@gmail.com",
+    phone_number: '(+33) 667 62 02 99',
     password: "123456",
     role: 'client'
 )
