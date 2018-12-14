@@ -59,7 +59,7 @@
                     <%= link_to "Edit", edit_project_task_path( task.project, task) %>
                   <% end %>
                   <%= link_to "Review", project_tasks_path %>
-                  <%  if policy(task).close? %>
+                  <%  if policy(task).close? && task.status == false %>
                     <%= link_to "Close", edit_task_to_close_path( task.project, task) %>
                   <% end %>
                   <% if policy(task).destroy? %>

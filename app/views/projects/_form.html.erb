@@ -14,8 +14,6 @@
       <% if policy(@project).edit? %>
        <%= f.input :manager_id, collection: User.where(role: "manager"), label_method: :userinfo, value_method: :id, label_html: {class: 'pull-left'} %>
        <%= f.input :expert_id, collection: User.where(role: "expert"), label_method: :userinfo, value_method: :id, label_html: {class: 'pull-left'} %>
-        <%#= f.check_box :approved, checked: @project.approved? %>
-        <%#= f.input :approved, :collection => ['Today', 'Tomorrow', 'In 3 Days'], :as => :radio %>
         <%= f.input :approved,
                     label: "Status",
                     collection: [[true, 'Approved'], [false, 'Pending']],
