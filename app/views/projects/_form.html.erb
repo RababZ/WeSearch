@@ -13,11 +13,11 @@
 
       <% if policy(@project).edit? %>
       <div class="form-group integer optional project_nb_tasks form-group-valid">
-        <%=  label "project",:manager_id , "Manager", class: "form-control-label integer optional pull-left" %>
-        <%= f.select :manager_id, options_from_collection_for_select(User.where(role: "manager"), 'id', :userinfo), :prompt => 'Select a manager' %>
+        <%#=  label "project",:manager_id , "Manager", class: "form-control-label integer optional pull-left" %>
+        <%#= f.select :manager_id, options_from_collection_for_select(User.where(role: "manager"), 'id', :userinfo), :prompt => 'Select a manager' %>
       </div>
-
-       <%= f.input :expert, collection: User.where(role: "expert"), label_method: :userinfo, value_method: :id, label_html: {class: 'pull-left'} %>
+        <%= f.input :manager_id, collection: User.where(role: "manager"), label_method: :userinfo, value_method: :id, label_html: {class: 'pull-left'} %>
+        <%= f.input :expert_id, collection: User.where(role: "expert"), label_method: :userinfo, value_method: :id, label_html: {class: 'pull-left'} %>
         <%#= f.check_box :approved, checked: @project.approved? %>
         <%#= f.input :approved, :collection => ['Today', 'Tomorrow', 'In 3 Days'], :as => :radio %>
         <%= f.input :approved,
