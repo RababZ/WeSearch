@@ -18,6 +18,7 @@ class TasksController < ApplicationController
     authorize @project
     authorize @task
     @task.project = @project
+    @task.status = false
     #@task.user = current_user #the manager who affect the expert later
     if @task.save
       redirect_to project_tasks_path
@@ -69,6 +70,10 @@ class TasksController < ApplicationController
     authorize @project
     authorize @task
     if @task.update(end_date: task_params[:end_date], deadline: task_params[:deadline], work_hours: task_params[:work_hours], status: true)
+      if close_project?(@project)
+        @project.status = true
+        @project.save
+      end
       redirect_to project_tasks_path(@task.project)
     else
       redirect_to :edit_to_close
@@ -78,6 +83,10 @@ class TasksController < ApplicationController
 
 
   private
+
+  def close_project?(project)
+    project.tasks.where(status: false).empty?
+  end
 
   def task_params
     params.require(:task).permit(:title, :description, :start_date, :end_date, :deadline, :work_hours)

@@ -37,7 +37,7 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def close?
-    (user_is_expert? || user_is_manager?) && !task_is_closed? && !user_is_client? #true
+    (user_is_expert? || user_is_manager?) && !user_is_client? #true
   end
 
 
