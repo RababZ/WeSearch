@@ -19,7 +19,8 @@
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1">
             <div class="project-card">
-                <h3>New Message</h3>
+                <h3>New Message to <%= @conversation.recipient.full_name %></h3>
+                <p><%= @conversation.recipient.email %></p>
                 <%= simple_form_for [@conversation, @message] do |f| %>
                 <%= f.input :body, label_html: {class: 'pull-left'} %>
                 <%= f.input :user_id, value: current_user.id, as: :hidden %>
