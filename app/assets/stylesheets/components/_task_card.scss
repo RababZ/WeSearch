@@ -141,7 +141,10 @@
   margin-bottom: 30px;
 }
 
-
+.left-margin {
+  margin-left: 12px;
+  text-align: center;
+}
 
 .message-status {
   //display: flex;
@@ -150,13 +153,14 @@
   margin: 30px;
   font-size: 14px;
   font-weight: bold;
+
 }
 .status.accepted {
-  color: #04A366;
+  color: $green;
 }
 .status.declined {
-  color: lightgrey;
+  color: $light-gray;
 }
 .status.pending {
-  color: red;
+  color: $red;
 }

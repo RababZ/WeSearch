@@ -11,8 +11,14 @@
                     <h4><i class="fas fa-industry"></i><strong>   Industry</strong> <%=  @project.industry %></h4>
                     <h4><i class="fas fa-clock"></i><strong>   Duration</strong> <%=  @project.nb_hours %> hours</h4>
                     <br>
-                    <h4><strong>Client</strong> <%=  @project.client.email %></h4>
-                    <h4><strong>Expert</strong> <%= @project.expert.nil? ? "Not assigned yet" : "#{@project.manager.first_name} #{@project.manager.last_name} (#{@project.manager.email}" %></h3>
+                    <h4><strong>Client</strong> <%=  @project.client.full_name %></h4>
+                    <h4><strong>Expert</strong> <%= @project.expert.nil? ? "Not assigned yet" : @project.expert.full_name %>
+                    <% if @project.expert %>
+                    <%= link_to conversations_path(sender_id: current_user.id, recipient_id: @project.expert.id), method: "post" do %>
+                      <i class="fas fa-envelope"></i>
+                    <% end %>
+                    <% end %>
+                  </h4>
                 <br>
             <h4><strong><% if @project.approved %>
               <i class="fas fa-check-circle"></i>
@@ -45,8 +51,6 @@
                 <h3 class="task-card-title"><strong><%= task.title %></strong></h3>
                 <br>
                 <h4 class="task-card-title"><i class="fas fa-calendar-alt"></i>   Start date <%= task.start_date %></h4>
-                    <br>
-                    <h4 class="task-card-title"><i class="fas fa-stopwatch"></i>   Deadline: <%= task.deadline %></h3>
               </div>
               <div class="col-xs-12 col-sm-6">
                 <div class="task-card-body"><p><%= task.description %></p></div>
@@ -73,11 +77,21 @@
                 </div> -->
                 <div class="message-status">
                   <% if task.status == true %>
-                    <p class="status accepted">Closed</p>
-                    <p>work hours: <%= task.work_hours %></p>
+                  <div class="left-margin">
+                    <h4 class="status accepted"><strong>Closed</strong></h4>
+                  </div>
+                    <br>
+                    <h4><i class="fas fa-clock"></i>  Hours</h4>
+                    <p>   <%= task.work_hours %></p>
                   <% else %>
-                    <p class="status pending">Pending</p>
-                    <p>deadline: <%= task.deadline %></p>
+                  <div class="left-margin">
+                    <h4 class="status pending"><strong>Pending</strong></h4>
+                  </div>
+                    <br>
+                    <h4><i class="fas fa-stopwatch"></i>  Deadline</h4>
+                  <div class="left-margin">
+                    <p><%= task.deadline %></p>
+                  </div>
                   <% end %>
 
 
