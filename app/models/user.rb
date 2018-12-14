@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  COUNTRIES =  ['Ethiopia', 'Ghana', 'Ivory Coast', 'Morocco', 'Nigeria', 'Senegal', 'South Africa', 'Tunisia']
+  COUNTRIES =  ['Ethiopia', 'Ghana', 'Ivory Coast', 'Kenya', 'Morocco', 'Nigeria', 'Senegal', 'South Africa', 'Tunisia']
   INDUSTRIES = ["Agriculture", "Construction", "Finance", "Healthcare", "Manufacturing", "Retail", "Technology"]
   YEARS_EXPERIENCE = ["2+ years", "5+ years", "10+ years"]
   HOURS_PER_WEEK = [5, 10, 15, 20, 25, 30, 35]
