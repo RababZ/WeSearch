@@ -42,7 +42,9 @@ class ProjectsController < ApplicationController
     @project.status = false
     authorize @project
     if @project.save
+
       create_tasks(@project)
+
       redirect_to project_path(@project), notice: 'Project was successfully created'
     else
       render :new

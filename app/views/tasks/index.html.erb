@@ -33,7 +33,7 @@
             <br>
             <div class="project-task-card-actions">
                 <% if policy(Project.find(params[:project_id])).show? %>
-                    <%= link_to "new Task", new_project_task_path, class: "btn btn-success" %>
+                    <%= link_to "New deliverable", new_project_task_path, class: "btn btn-success" %>
                 <% end %>
                 <%= link_to "Projects", projects_path %>
               </div>

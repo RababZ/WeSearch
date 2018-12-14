@@ -12,7 +12,7 @@
                 autofocus: true ,
                 input_html: { autocomplete: "email" }, label_html: {class: 'pull-left'} %>
                         <%= f.input :role,
-                :collection => %w[Manager Client Expert],
+                :collection => ["Client", "Knowledge professional"],
                 required: true,
                 autofocus: true ,
                 input_html: { autocomplete: "role" }, label_html: {class: 'pull-left'} %>

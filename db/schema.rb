@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_12_143823) do
+ActiveRecord::Schema.define(version: 2018_12_13_201120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,12 +109,13 @@ ActiveRecord::Schema.define(version: 2018_12_12_143823) do
     t.boolean "availability"
     t.integer "hours_available_per_weeek"
     t.text "description"
+    t.string "phone_number"
+    t.text "past_experience"
+    t.text "languages"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "messages", "conversations"
-  add_foreign_key "messages", "users"
   add_foreign_key "tasks", "projects"
   add_foreign_key "user_industries", "industries"
   add_foreign_key "user_industries", "users"
