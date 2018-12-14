@@ -42,21 +42,9 @@ class ProjectsController < ApplicationController
     @project.status = false
     authorize @project
     if @project.save
-      div = @project.nb_hours / @project.nb_tasks
-      rest = @project.nb_hours.modulo(@project.nb_tasks)
-      #create tasks
-      @project.nb_tasks.times do |i|
-        if i == (@project.nb_tasks - 1)
-          div += rest
-        end
-        task = Task.create(
-          title: "Deliverable" + (i + 1).to_s,
-          description: "Please write here the description of the deliverable before you mark it as complete.",
-          project: @project,
-          work_hours: div,
-          status: false
-        )
-      end
+
+      create_tasks(@project)
+
       redirect_to project_path(@project), notice: 'Project was successfully created'
     else
       render :new
@@ -68,6 +56,8 @@ class ProjectsController < ApplicationController
 
   def update
     @project.update(project_params)
+    destroy_tasks(@project)
+    create_tasks(@project)
     redirect_to projects_path
   end
 
@@ -77,6 +67,30 @@ class ProjectsController < ApplicationController
   end
 
   private
+
+  def destroy_tasks(project)
+    project.tasks.each do |task|
+      task.destroy
+    end
+  end
+
+  def create_tasks(project)
+    div = project.nb_hours / project.nb_tasks
+    rest = project.nb_hours.modulo(project.nb_tasks)
+    #create tasks
+    project.nb_tasks.times do |i|
+      if i == (project.nb_tasks - 1)
+        div += rest
+      end
+      task = Task.create(
+        title: "Delivery" + (i + 1).to_s,
+        description: "Delivery",
+        project: project,
+        work_hours: div,
+        status: false
+      )
+    end
+  end
 
   def set_project
     @project = Project.find(params[:id])
