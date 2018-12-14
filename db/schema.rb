@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 2018_12_13_201120) do
     t.boolean "availability"
     t.integer "hours_available_per_weeek"
     t.text "description"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.text "past_experience"
     t.text "languages"
     t.index ["email"], name: "index_users_on_email", unique: true

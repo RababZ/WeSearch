@@ -56,7 +56,7 @@ user = User.create(
     role: 'client'
 )
 
-puts "Client 2 created"
+puts "Client 3 created"
 
 # Main Expert - Finance/Morocco
 user = User.create(
@@ -72,7 +72,7 @@ user = User.create(
     country: "Morocco",
     industry: 'Finance',
     languages: "Arabic, French, English, Spanish",
-    phone_number: '(+212) 676 82 02 34'
+    phone_number: '(+212) 676 82 02 34',
     hours_available_per_weeek: 20,
     years_experience: 6
   )
@@ -92,11 +92,11 @@ user = User.create(
     country: "Kenya",
     industry: 'Finance',
     languages: "Swahili, English",
-    phone_number: '(+254) 676 82 02 34'
+    phone_number: '(+254) 676 82 02 34',
     hours_available_per_weeek: 20,
     years_experience: 6
   )
-puts "Exoert 2 created"
+puts "Expert 2 created"
 
 # Expert 3 - Finance/Morocco
 user = User.create(
@@ -111,11 +111,30 @@ user = User.create(
     country: "Kenya",
     industry: 'Finance',
     languages: "Swahili, English",
-    phone_number: '(+254) 676 82 02 34'
+    phone_number: '(+254) 676 82 02 34',
     hours_available_per_weeek: 20,
     years_experience: 6
   )
-puts "Exoert 2 created"
+puts "Expert 3 created"
+
+# Expert 4 - Finance/Morocco
+user = User.create(
+    first_name: 'Soukaina',
+    last_name: 'Laaraichi',
+    email: "soukaina.laraichi@gmail.com",
+    password: "123456",
+    role: 'Research specialist',
+    description: 'Graduated from one of the best schools in the country. Can adapt to any type of request: secondary or primary. I have a broad market research experience in Finance',
+    past_experience: 'I have been working for 5 years now as an independent research analyst',
+    availability: true,
+    country: "Morocco",
+    industry: 'Finance',
+    languages: "Arabic, French, English",
+    phone_number: '(+254) 676 82 02 34',
+    hours_available_per_weeek: 20,
+    years_experience: 6
+  )
+puts "Expert 4 created"
 
 # Experts
 10.times do
@@ -155,6 +174,7 @@ project = Project.create(
   client: User.where(role: 'client').sample,
   manager: User.where(role: 'manager').sample,
   expert: User.where(role: 'expert').sample
+  )
 
 10.times do
   project = Project.create(
